@@ -1,0 +1,85 @@
+﻿@model IEnumerable<maibagamofisa.Models.VocabularyLesson>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        .lesson-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .lesson-image {
+            width: 100%; /* Ensure the image takes full width of its container */
+            height: 200px; /* Set a fixed height for uniformity */
+            object-fit: cover; /* Ensure the image fills the container while maintaining aspect ratio */
+            border-radius: 5px 5px 0 0;
+        }
+
+        .lesson-content {
+            padding: 15px;
+        }
+
+        .lesson-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .lesson-actions {
+            text-align: right;
+        }
+
+        .purple-button {
+            background-color: #6a1b9a;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+            .purple-button:hover {
+                background-color: #4a148c;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center mb-4">Vocabulary Lessons</h2>
+        <div class="row">
+            @foreach (var lesson in Model)
+            {
+                <div class="col-md-4">
+                    <div class="lesson-card">
+                        <img src="@lesson.CoverImagePath" class="lesson-image" />
+                        <div class="lesson-content">
+                            <h3 class="lesson-title">@lesson.LessonName</h3>
+                            <div class="lesson-actions">
+                                @*<a asp-action="Edit" asp-route-id="@lesson.LessonId" class="btn purple-button">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@lesson.LessonId" class="btn purple-button ml-2">Delete</a>*@
+                            <a asp-action="Index" asp-controller="Colors" class="btn purple-button ml-2">Details</a>
+                               
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
