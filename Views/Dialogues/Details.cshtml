@@ -1,0 +1,58 @@
+﻿@model maibagamofisa.Models.Dialogue
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Dialogue</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+        <dt class="col-sm-2">
+            Questions
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.Questions))
+            { string cleanQuestions = Model.Questions.TrimStart('[').TrimEnd(']').Replace("\"", "");
+
+                var questions = Model.Questions.Split(new[] { "\",\"", "\",\"" }, StringSplitOptions.None);
+               
+                <ol>
+                    @for (int i = 0; i < questions.Length; i++)
+                    {
+                        var formattedQuestion = questions[i].Trim('"');
+                        <li>@formattedQuestion</li>
+                    }
+                </ol>
+            }
+            else
+            {
+                <p>No questions available.</p>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

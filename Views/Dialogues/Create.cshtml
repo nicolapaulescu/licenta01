@@ -1,0 +1,58 @@
+﻿@model maibagamofisa.Models.Dialogue
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Dialogue</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <input asp-for="Content" class="form-control" />
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="question-container">
+                <label class="control-label">Questions</label>
+                <input type="text" name="Questions" class="form-control" />
+                <span class="text-danger"></span>
+            </div>
+            <button type="button" class="btn btn-success" onclick="addQuestion()">+</button>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script>
+        function addQuestion() {
+            var container = document.getElementById("question-container");
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "Questions";
+            input.classList.add("form-control");
+            container.appendChild(input);
+        }
+    </script>
+}

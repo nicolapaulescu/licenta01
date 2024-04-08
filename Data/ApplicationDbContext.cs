@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using maibagamofisa.Models;
 
 namespace maibagamofisa.Data
 {
@@ -9,5 +10,6 @@ namespace maibagamofisa.Data
             : base(options)
         {
         }
+        public DbSet<maibagamofisa.Models.Dialogue> Dialogue { get; set; } = default!;
     }
 }

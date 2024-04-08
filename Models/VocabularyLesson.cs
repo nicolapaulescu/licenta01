@@ -14,4 +14,5 @@ public partial class VocabularyLesson
     public string? GermanLessonName { get; set; }
 
     public virtual ICollection<Color> Colors { get; set; } = new List<Color>();
+    public virtual ICollection<Fruit> Fruits { get; set; } = new List<Fruit>();
 }

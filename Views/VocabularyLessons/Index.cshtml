@@ -57,29 +57,60 @@
     </style>
 
 </head>
-<body>
-    <div class="container">
-        <h2 class="text-center mb-4">Vocabulary Lessons</h2>
-        <div class="row">
-            @foreach (var lesson in Model)
-            {
-                <div class="col-md-4">
-                    <div class="lesson-card">
-                        <img src="@lesson.CoverImagePath" class="lesson-image" />
-                        <div class="lesson-content">
-                            <h3 class="lesson-title">@lesson.LessonName</h3>
-                            <div class="lesson-actions">
-                                @*<a asp-action="Edit" asp-route-id="@lesson.LessonId" class="btn purple-button">Edit</a>
-                                <a asp-action="Delete" asp-route-id="@lesson.LessonId" class="btn purple-button ml-2">Delete</a>*@
-                            <a asp-action="Index" asp-controller="Colors" class="btn purple-button ml-2">Details</a>
-                               
-
-                            </div>
+<div class="container">
+    <h2 class="text-center mb-4">Vocabulary Lessons</h2>
+    <div class="row">
+        @foreach (var lesson in Model)
+        {
+            <div class="col-md-4">
+                <div class="lesson-card">
+                    <img src="@lesson.CoverImagePath" class="lesson-image" />
+                    <div class="lesson-content">
+                        <h3 class="lesson-title">@lesson.LessonName</h3>
+                        <div class="lesson-actions">
+                            @if (lesson.LessonId == 1)
+                            {
+                                <a asp-action="Index" asp-controller="Colors" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 2)
+                            {
+                                <a asp-action="Index" asp-controller="Fruits" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 3)
+                            {
+                                <a asp-action="Index" asp-controller="Vegetables" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 4)
+                            {
+                                <a asp-action="Index" asp-controller="Animals" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 5)
+                            {
+                                <a asp-action="Index" asp-controller="Daysoftheweeks" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 6)
+                            {
+                                <a asp-action="Index" asp-controller="Verbs" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 7)
+                            {
+                                <a asp-action="Index" asp-controller="Bodies" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 8)
+                            {
+                                <a asp-action="Index" asp-controller="Houses" class="btn purple-button ml-2">Details</a>
+                            }
+                            else if (lesson.LessonId == 9)
+                            {
+                                <a asp-action="Index" asp-controller="Jobs" class="btn purple-button ml-2">Details</a>
+                            }
+                            <!-- Add more conditions for other lesson IDs -->
                         </div>
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
     </div>
-</body>
+</div>
+
 </html>
