@@ -58,6 +58,7 @@ namespace maibagamofisa.Controllers
         {
             if (ModelState.IsValid)
             {
+                dialogue.Questions = string.Join(";", dialogue.Questions);
                 _context.Add(dialogue);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

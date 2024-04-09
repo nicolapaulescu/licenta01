@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" id="editForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
@@ -28,10 +28,20 @@
                 <input asp-for="Content" class="form-control" />
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Questions" class="control-label"></label>
-                <input asp-for="Questions" class="form-control" />
-                <span asp-validation-for="Questions" class="text-danger"></span>
+            <div class="form-group" id="questionsContainer">
+                <label>Questions:</label>
+                @if (Model.Questions != null)
+                {
+                    var questions = Model.Questions.Split(';');
+                    foreach (var question in questions)
+                    {
+                        <div class="question-group">
+                            <input type="text" name="Questions" class="form-control question-input" value="@question" />
+                            <button type="button" class="btn btn-danger delete-question">Delete</button>
+                        </div>
+                    }
+                }
+                <button type="button" class="btn btn-success" id="addQuestion">Add Question</button>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -45,5 +55,25 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $("#addQuestion").click(function () {
+                var questionGroup = '<div class="question-group"><input type="text" name="Questions" class="form-control question-input" /><button type="button" class="btn btn-danger delete-question">Delete</button></div>';
+                $("#questionsContainer").append(questionGroup);
+            });
+
+            $(document).on("click", ".delete-question", function () {
+                $(this).closest(".question-group").remove();
+            });
+
+            $("#editForm").submit(function () {
+                var questions = [];
+                $(".question-input").each(function () {
+                    questions.push($(this).val());
+                });
+                var questionsString = questions.join(';');
+                $("input[name='Questions']").val(questionsString);
+            });
+        });
+    </script>
 }

@@ -2,6 +2,8 @@ using maibagamofisa.Data;
 using maibagamofisa.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SautinSoft.Document;
+using System.Drawing;
 
 var builder = WebApplication.CreateBuilder(args);
 

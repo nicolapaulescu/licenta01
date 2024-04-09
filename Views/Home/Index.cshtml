@@ -3,6 +3,24 @@
 }
 
 <div class="text-center">
-    
-    <p><a href="https://learn.microsoft.com/aspnet/core"></a>.</p>
+    <h1>Welcome to Your Application!</h1>
+    <p>Learn more about ASP.NET Core <a href="https://learn.microsoft.com/aspnet/core">here</a>.</p>
+
+    <!-- Form for uploading the image -->
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="imageFile">Upload Image:</label>
+            <input type="file" class="form-control-file" id="imageFile" name="imageFile">
+        </div>
+        <button type="submit" class="btn btn-primary">Extract Text</button>
+    </form>
+
+    <!-- Display the extracted text -->
+    <div class="mt-4">
+        @if (!string.IsNullOrEmpty(ViewBag.ExtractedText))
+        {
+            <h3>Extracted Text:</h3>
+            <p>@Html.Raw(ViewBag.ExtractedText)</p>
+        }
+    </div>
 </div>
