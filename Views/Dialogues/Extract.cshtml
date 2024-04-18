@@ -1,0 +1,39 @@
+﻿    @model string
+
+    @{
+        ViewData["Title"] = "Extract Text";
+    }
+
+    <script>
+        // Define a global variable to store the extracted text
+        var extractedText = "";
+
+        // Function to set the extracted text to the global variable
+        function setExtractedText(text) {
+            extractedText = text;
+        }
+    </script>
+
+    <div class="text-center">
+        <h1>Extract Text</h1>
+        <!-- Form for uploading the image -->
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="imageFile">Upload Image:</label>
+                <input type="file" class="form-control-file" id="imageFile" name="imageFile">
+            </div>
+            <button type="submit" class="btn btn-primary">Extract Text</button>
+        </form>
+
+        <!-- Display the extracted text in a textarea -->
+        <div class="mt-4">
+            <h3>Extracted Text:</h3>
+            <textarea id="extractedText" class="form-control" rows="5">@Html.Raw(ViewBag.ExtractedText)</textarea>
+        </div>
+    </div>
+
+    <!-- Call the setExtractedText function to set the extracted text to the global variable -->
+    <script>
+        // Call the setExtractedText function with the extracted text from ViewBag
+        setExtractedText("@Html.Raw(ViewBag.ExtractedText)");
+    </script>

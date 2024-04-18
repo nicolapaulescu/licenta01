@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using maibagamofisa.Data;
 using maibagamofisa.Models;
+using Tesseract;
 
 namespace maibagamofisa.Controllers
 {
@@ -24,6 +25,87 @@ namespace maibagamofisa.Controllers
         {
             return View(await _context.Dialogue.ToListAsync());
         }
+
+
+        public List<Dialogue> GetDialogues()
+        {
+            return _context.Dialogue.ToList();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Extract()
+        {
+            var dialogues = GetDialogues();
+            ViewBag.Dialogues = dialogues;
+
+            return View();
+        }
+
+
+
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> Extract(IFormFile imageFile)
+        {
+            try
+            {
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        imageFile.CopyTo(memoryStream);
+                        memoryStream.Position = 0;
+
+                        using (var engine = new TesseractEngine(@"./tesseract/tessdata", language: "deu", EngineMode.Default))
+                        {
+                            using (var image = Pix.LoadFromMemory(memoryStream.ToArray()))
+                            {
+                                using (var page = engine.Process(image))
+                                {
+                                    var extractedText = page.GetText();
+                                    ViewData["ExtractedText"] = extractedText;
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ViewData["ExtractedText"] = "No image file provided.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewData["ExtractedText"] = "Error processing the image: " + ex.Message;
+            }
+
+            return View();
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveText(int dialogueId, string extractedText)
+        {
+            // Assuming you have a method to retrieve the dialogue by its ID
+            var dialogue = await _context.Dialogue.FindAsync(dialogueId);
+
+            if (dialogue == null)
+            {
+                return NotFound();
+            }
+
+            // Assuming you have a property in your Dialogue model to store the extracted text
+            dialogue.Content = extractedText;
+
+            _context.Update(dialogue);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
 
         // GET: Dialogues/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -149,6 +231,7 @@ namespace maibagamofisa.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool DialogueExists(int id)
         {
