@@ -91,5 +91,7 @@ public DbSet<maibagamofisa.Models.Daysoftheweek> Daysoftheweek { get; set; } = d
 
 public DbSet<maibagamofisa.Models.Dialogue> Dialogue { get; set; } = default!;
 
+public DbSet<maibagamofisa.Models.Chat> Chat { get; set; } = default!;
+
     
 }

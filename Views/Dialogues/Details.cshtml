@@ -4,54 +4,90 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="title">@Model.Title</h1>
 
-<div>
-    <h4>Dialogue</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-        <dt class="col-sm-2">
-            Questions
-        </dt>
-        <dd class="col-sm-10">
-            @if (!string.IsNullOrEmpty(Model.Questions))
-            {
-                var questions = Model.Questions.Split(';');
-
-                <ol>
-                    @for (int i = 0; i < questions.Length; i++)
-                    {
-                        <li>@questions[i]</li>
-                    }
-                </ol>
-            }
-            else
-            {
-                <p>No questions available.</p>
-            }
-
-        </dd>
-    </dl>
+<div class="content">
+    @Html.DisplayFor(model => model.Content)
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+@if (!string.IsNullOrEmpty(Model.Questions))
+{
+    var questions = Model.Questions.Split(';');
+    <div class="questions">
+        @for (int i = 0; i < questions.Length; i++)
+        {
+            <div class="question @(i % 2 == 0 ? "left" : "right")">
+                @questions[i]
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p class="no-questions">No questions available.</p>
+}
+
+<div class="action-links">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .title {
+        font-size: 2.5em;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .content {
+        text-align: center;
+        font-size: 1.2em;
+        margin-bottom: 40px;
+    }
+
+    .questions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .question {
+        max-width: 60%;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 1em;
+        color: white;
+        word-wrap: break-word;
+    }
+
+        .question.left {
+            align-self: flex-start;
+            background-color: #007bff;
+        }
+
+        .question.right {
+            align-self: flex-end;
+            background-color: #6c757d;
+        }
+
+    .no-questions {
+        text-align: center;
+        color: #999;
+        font-size: 1.1em;
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+        .action-links .btn {
+            margin: 0 10px;
+        }
+</style>

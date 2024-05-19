@@ -33,16 +33,6 @@
                 <textarea id="content" asp-for="Content" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label for="fileInput">Upload Image:</label>
-                <input type="file" id="imageFile" name="imageFile" class="form-control-file">
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-primary" id="extractText">Extract Text</button>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
         </form>
     </div>
 
@@ -66,22 +56,12 @@
     </div>
 </div>
 
-
-
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
     <script>
-        // Define a global variable to store the extracted text
-        var extractedText = "";
-
-        // Function to set the extracted text to the global variable
-        function setExtractedText(text) {
-            extractedText = text;
-        }
-
         $(document).ready(function () {
             $("#addQuestion").click(function () {
                 var questionGroup = '<div class="question-group"><input type="text" name="Questions" class="form-control question-input" /><button type="button" class="btn btn-danger delete-question">Delete</button></div>';
@@ -91,28 +71,6 @@
             $(document).on("click", ".delete-question", function () {
                 $(this).closest(".question-group").remove();
             });
-
-            $("#extractText").click(function () {
-                var formData = new FormData();
-                formData.append("imageFile", $("#imageFile")[0].files[0]);
-
-                $.ajax({
-                    url: "/Dialogues/Extract",
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (data) {
-                        // Set the extracted text to both the global variable and the content textarea
-                        extractedText = data;
-                        $("#content").val(data);
-                    },
-                    error: function () {
-                        alert("Error occurred while extracting text from the image.");
-                    }
-                });
-            });
         });
     </script>
 }
-

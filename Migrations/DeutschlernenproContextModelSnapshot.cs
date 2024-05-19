@@ -47,7 +47,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("AnimalID");
 
-                    b.ToTable("Animals");
+                    b.ToTable("Animals", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Body", b =>
@@ -75,7 +75,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("BodyID");
 
-                    b.ToTable("Body");
+                    b.ToTable("Body", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Color", b =>
@@ -108,7 +108,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Colors");
+                    b.ToTable("Colors", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Daysoftheweek", b =>
@@ -136,7 +136,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("DaysoftheweekID");
 
-                    b.ToTable("Daysoftheweek");
+                    b.ToTable("Daysoftheweek", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Dialogue", b =>
@@ -165,7 +165,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dialogue");
+                    b.ToTable("Dialogue", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Fruit", b =>
@@ -198,7 +198,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasIndex("LessonId");
 
-                    b.ToTable("Fruits");
+                    b.ToTable("Fruits", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.House", b =>
@@ -226,7 +226,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("HouseID");
 
-                    b.ToTable("House");
+                    b.ToTable("House", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Job", b =>
@@ -254,7 +254,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("JobID");
 
-                    b.ToTable("Jobs");
+                    b.ToTable("Jobs", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Vegetable", b =>
@@ -282,7 +282,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("VegetableID");
 
-                    b.ToTable("Vegetables");
+                    b.ToTable("Vegetables", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Verb", b =>
@@ -310,7 +310,7 @@ namespace maibagamofisa.Migrations
 
                     b.HasKey("VerbID");
 
-                    b.ToTable("Verbs");
+                    b.ToTable("Verbs", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.VocabularyLesson", b =>
@@ -336,7 +336,7 @@ namespace maibagamofisa.Migrations
                     b.HasKey("LessonId")
                         .HasName("PK__Vocabula__B084ACB0795A3570");
 
-                    b.ToTable("VocabularyLessons");
+                    b.ToTable("VocabularyLessons", (string)null);
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Color", b =>

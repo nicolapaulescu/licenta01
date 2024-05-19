@@ -6,87 +6,78 @@
 
 <h1>Index</h1>
 
-<div class="mb-3">
-    <a asp-action="Create" class="btn btn-purple">Create New</a>
-    <a asp-action="Extract" class="btn btn-purple">Extract Text</a>
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <div class="card chat-box @((item.Id % 2 == 0) ? "chat-left" : "chat-right")">
+                    <div class="card-header">
+                        <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-details">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="dialogueModal_@item.Id" tabindex="-1" role="dialog" aria-labelledby="dialogueModalLabel_@item.Id" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="dialogueModalLabel_@item.Id">@Html.DisplayFor(modelItem => item.Title)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- "Create New" button -->
+<div class="container">
+    <div class="row justify-content-end fixed-bottom mb-3 mr-3">
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-purple">Create New</a>
+        </div>
+    </div>
 </div>
 
-<table class="table table-purple">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Content)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Questions)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Content)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Questions)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
 <style>
-    .btn-purple {
-        background-color: #aa80ff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        text-decoration: none;
-        transition: background-color 0.3s;
+    .chat-box {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 10px;
+        transition: box-shadow 0.3s;
     }
 
-    .btn-purple:hover {
-            background-color: #aa80ff;
+    .chat-left {
+        float: left;
+        clear: both;
     }
 
-    .table-purple {
-        border: 1px solid #ddd;
-        border-radius: 5px;
+    .chat-right {
+        float: right;
+        clear: both;
+    }
+
+    .chat-box:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .table-purple th,
-    .table-purple td {
-        padding: 10px;
-    }
-
-    .table-purple th {
-            background-color: #aa80ff;
-        color: #fff;
-    }
-
-    .table-purple tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
+    .modal-dialog {
+        max-width: 80%;
     }
 </style>

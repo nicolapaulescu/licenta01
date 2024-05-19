@@ -1,11 +1,14 @@
-using maibagamofisa.Data;
+﻿using maibagamofisa.Data;
 using maibagamofisa.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SautinSoft.Document;
 using System.Drawing;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<secretdiscretContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("secretdiscretContext") ?? throw new InvalidOperationException("Connection string 'secretdiscretContext' not found.")));
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");

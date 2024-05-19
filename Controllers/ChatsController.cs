@@ -5,31 +5,27 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using maibagamofisa.Data;
 using maibagamofisa.Models;
 
 namespace maibagamofisa.Controllers
 {
-    public class VocabularyLessonsController : Controller
+    public class ChatsController : Controller
     {
-        private readonly DeutschlernenproContext _context;
+        private readonly secretdiscretContext _context;
 
-        public VocabularyLessonsController(DeutschlernenproContext context)
+        public ChatsController(secretdiscretContext context)
         {
             _context = context;
         }
 
-        // GET: VocabularyLessons
+        // GET: Chats
         public async Task<IActionResult> Index()
         {
-            return View(await _context.VocabularyLessons.ToListAsync());
-        }
-        public IActionResult Game()
-        {
-            return View();
+            return View(await _context.Chat.ToListAsync());
         }
 
-
-        // GET: VocabularyLessons/Details/5
+        // GET: Chats/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -37,39 +33,39 @@ namespace maibagamofisa.Controllers
                 return NotFound();
             }
 
-            var vocabularyLesson = await _context.VocabularyLessons
-                .FirstOrDefaultAsync(m => m.LessonId == id);
-            if (vocabularyLesson == null)
+            var chat = await _context.Chat
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (chat == null)
             {
                 return NotFound();
             }
 
-            return View(vocabularyLesson);
+            return View(chat);
         }
 
-        // GET: VocabularyLessons/Create
+        // GET: Chats/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: VocabularyLessons/Create
+        // POST: Chats/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LessonId,LessonName,CoverImagePath,GermanLessonName")] VocabularyLesson vocabularyLesson)
+        public async Task<IActionResult> Create([Bind("Id,Title,ImagePath")] Chat chat)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(vocabularyLesson);
+                _context.Add(chat);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(vocabularyLesson);
+            return View(chat);
         }
 
-        // GET: VocabularyLessons/Edit/5
+        // GET: Chats/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -77,22 +73,22 @@ namespace maibagamofisa.Controllers
                 return NotFound();
             }
 
-            var vocabularyLesson = await _context.VocabularyLessons.FindAsync(id);
-            if (vocabularyLesson == null)
+            var chat = await _context.Chat.FindAsync(id);
+            if (chat == null)
             {
                 return NotFound();
             }
-            return View(vocabularyLesson);
+            return View(chat);
         }
 
-        // POST: VocabularyLessons/Edit/5
+        // POST: Chats/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LessonId,LessonName,CoverImagePath,GermanLessonName")] VocabularyLesson vocabularyLesson)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ImagePath")] Chat chat)
         {
-            if (id != vocabularyLesson.LessonId)
+            if (id != chat.Id)
             {
                 return NotFound();
             }
@@ -101,12 +97,12 @@ namespace maibagamofisa.Controllers
             {
                 try
                 {
-                    _context.Update(vocabularyLesson);
+                    _context.Update(chat);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!VocabularyLessonExists(vocabularyLesson.LessonId))
+                    if (!ChatExists(chat.Id))
                     {
                         return NotFound();
                     }
@@ -117,10 +113,10 @@ namespace maibagamofisa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(vocabularyLesson);
+            return View(chat);
         }
 
-        // GET: VocabularyLessons/Delete/5
+        // GET: Chats/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -128,34 +124,34 @@ namespace maibagamofisa.Controllers
                 return NotFound();
             }
 
-            var vocabularyLesson = await _context.VocabularyLessons
-                .FirstOrDefaultAsync(m => m.LessonId == id);
-            if (vocabularyLesson == null)
+            var chat = await _context.Chat
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (chat == null)
             {
                 return NotFound();
             }
 
-            return View(vocabularyLesson);
+            return View(chat);
         }
 
-        // POST: VocabularyLessons/Delete/5
+        // POST: Chats/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var vocabularyLesson = await _context.VocabularyLessons.FindAsync(id);
-            if (vocabularyLesson != null)
+            var chat = await _context.Chat.FindAsync(id);
+            if (chat != null)
             {
-                _context.VocabularyLessons.Remove(vocabularyLesson);
+                _context.Chat.Remove(chat);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool VocabularyLessonExists(int id)
+        private bool ChatExists(int id)
         {
-            return _context.VocabularyLessons.Any(e => e.LessonId == id);
+            return _context.Chat.Any(e => e.Id == id);
         }
     }
 }
