@@ -11,5 +11,6 @@ namespace maibagamofisa.Data
         {
         }
         public DbSet<maibagamofisa.Models.Dialogue> Dialogue { get; set; } = default!;
+        public DbSet<maibagamofisa.Models.WordPair> WordPair { get; set; } = default!;
     }
 }

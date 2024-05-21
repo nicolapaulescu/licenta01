@@ -1,0 +1,170 @@
+﻿@model IEnumerable<maibagamofisa.Models.WordPair>
+@{
+    ViewData["Title"] = "Word Matching Game";
+    var wordPairsJson = ViewBag.WordPairsJson;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 56px); /* Adjust for navbar height if it's 56px */
+            padding-top: 56px; /* Adjust for navbar height */
+            box-sizing: border-box;
+        }
+
+        .columns-container {
+            display: flex;
+            justify-content: space-between;
+            width: 60%;
+            padding: 20px;
+        }
+
+        .column {
+            width: 45%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .word {
+            border: 2px solid #ccc;
+            padding: 15px 20px;
+            margin: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            background-color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .word:hover {
+                border-color: #007bff;
+                background-color: #e7f1ff;
+            }
+
+        .selected {
+            border-color: #007bff;
+            background-color: #d4e8ff;
+        }
+
+        .correct {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .incorrect {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <div class="columns-container">
+            <div class="column" id="german-words"></div>
+            <div class="column" id="english-words"></div>
+        </div>
+    </div>
+
+    <script>
+        const wordPairs = JSON.parse('@Html.Raw(wordPairsJson)');
+        let displayedPairs = [];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function displayWords() {
+            const germanContainer = document.getElementById('german-words');
+            const englishContainer = document.getElementById('english-words');
+
+            germanContainer.innerHTML = '';
+            englishContainer.innerHTML = '';
+
+            displayedPairs = shuffle(wordPairs.slice()).slice(0, 5);
+            const shuffledEnglishWords = shuffle(displayedPairs.slice());
+
+            displayedPairs.forEach(pair => {
+                const germanDiv = document.createElement('div');
+                germanDiv.classList.add('word');
+                germanDiv.dataset.id = pair.Id;
+                germanDiv.dataset.type = 'german';
+                germanDiv.innerText = pair.GermanWord;
+                germanDiv.onclick = handleWordClick;
+                germanContainer.appendChild(germanDiv);
+            });
+
+            shuffledEnglishWords.forEach(pair => {
+                const englishDiv = document.createElement('div');
+                englishDiv.classList.add('word');
+                englishDiv.dataset.id = pair.Id;
+                englishDiv.dataset.type = 'english';
+                englishDiv.innerText = pair.EnglishWord;
+                englishDiv.onclick = handleWordClick;
+                englishContainer.appendChild(englishDiv);
+            });
+        }
+
+        let selectedGerman = null;
+        let selectedEnglish = null;
+
+        function handleWordClick() {
+            if (this.dataset.type === 'german') {
+                if (selectedGerman) selectedGerman.classList.remove('selected');
+                selectedGerman = this;
+                selectedGerman.classList.add('selected');
+            } else {
+                if (selectedEnglish) selectedEnglish.classList.remove('selected');
+                selectedEnglish = this;
+                selectedEnglish.classList.add('selected');
+            }
+
+            if (selectedGerman && selectedEnglish) {
+                if (selectedGerman.dataset.id === selectedEnglish.dataset.id) {
+                    selectedGerman.classList.add('correct');
+                    selectedEnglish.classList.add('correct');
+                    setTimeout(() => {
+                        selectedGerman.remove();
+                        selectedEnglish.remove();
+                        resetSelection();
+                        if (!document.querySelector('.word')) {
+                            displayWords();
+                        }
+                    }, 500);
+                } else {
+                    selectedGerman.classList.add('incorrect');
+                    selectedEnglish.classList.add('incorrect');
+                    setTimeout(() => {
+                        selectedGerman.classList.remove('incorrect');
+                        selectedEnglish.classList.remove('incorrect');
+                        resetSelection();
+                    }, 500);
+                }
+            }
+        }
+
+        function resetSelection() {
+            if (selectedGerman) selectedGerman.classList.remove('selected');
+            if (selectedEnglish) selectedEnglish.classList.remove('selected');
+            selectedGerman = null;
+            selectedEnglish = null;
+        }
+
+        document.addEventListener('DOMContentLoaded', displayWords);
+    </script>
+</body>
+</html>

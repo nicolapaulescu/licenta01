@@ -1,0 +1,182 @@
+[
+  {
+    "Id": 1,
+    "GermanWord": "Hund",
+    "EnglishWord": "Dog",
+    "ImagePath": "/images/dog.jpg"
+  },
+  {
+    "Id": 2,
+    "GermanWord": "Katze",
+    "EnglishWord": "Cat",
+    "ImagePath": "/images/cat.jpg"
+  },
+  {
+    "Id": 3,
+    "GermanWord": "Apfel",
+    "EnglishWord": "Apple",
+    "ImagePath": "/images/apple.jpg"
+  },
+  {
+    "Id": 4,
+    "GermanWord": "Buch",
+    "EnglishWord": "Book",
+    "ImagePath": "/images/book.jpg"
+  },
+  {
+    "Id": 5,
+    "GermanWord": "Haus",
+    "EnglishWord": "House",
+    "ImagePath": "/images/house.jpg"
+  },
+  {
+    "Id": 6,
+    "GermanWord": "Auto",
+    "EnglishWord": "Car",
+    "ImagePath": "/images/car.jpg"
+  },
+  {
+    "Id": 7,
+    "GermanWord": "Baum",
+    "EnglishWord": "Tree",
+    "ImagePath": "/images/tree.jpg"
+  },
+  {
+    "Id": 8,
+    "GermanWord": "Blume",
+    "EnglishWord": "Flower",
+    "ImagePath": "/images/flower.jpg"
+  },
+  {
+    "Id": 9,
+    "GermanWord": "Fahrrad",
+    "EnglishWord": "Bicycle",
+    "ImagePath": "/images/bicycle.jpg"
+  },
+  {
+    "Id": 10,
+    "GermanWord": "Schule",
+    "EnglishWord": "School",
+    "ImagePath": "/images/school.jpg"
+  },
+  {
+    "Id": 11,
+    "GermanWord": "Tisch",
+    "EnglishWord": "Table",
+    "ImagePath": "/images/table.jpg"
+  },
+  {
+    "Id": 12,
+    "GermanWord": "Stuhl",
+    "EnglishWord": "Chair",
+    "ImagePath": "/images/chair.jpg"
+  },
+  {
+    "Id": 13,
+    "GermanWord": "Fenster",
+    "EnglishWord": "Window",
+    "ImagePath": "/images/window.jpg"
+  },
+  {
+    "Id": 14,
+    "GermanWord": "Tür",
+    "EnglishWord": "Door",
+    "ImagePath": "/images/door.jpg"
+  },
+  {
+    "Id": 15,
+    "GermanWord": "Lampe",
+    "EnglishWord": "Lamp",
+    "ImagePath": "/images/lamp.jpg"
+  },
+  {
+    "Id": 16,
+    "GermanWord": "Handy",
+    "EnglishWord": "Mobile Phone",
+    "ImagePath": "/images/mobile_phone.jpg"
+  },
+  {
+    "Id": 17,
+    "GermanWord": "Computer",
+    "EnglishWord": "Computer",
+    "ImagePath": "/images/computer.jpg"
+  },
+  {
+    "Id": 18,
+    "GermanWord": "Uhr",
+    "EnglishWord": "Clock",
+    "ImagePath": "/images/clock.jpg"
+  },
+  {
+    "Id": 19,
+    "GermanWord": "Zug",
+    "EnglishWord": "Train",
+    "ImagePath": "/images/train.jpg"
+  },
+  {
+    "Id": 20,
+    "GermanWord": "Flugzeug",
+    "EnglishWord": "Airplane",
+    "ImagePath": "/images/airplane.jpg"
+  },
+  {
+    "Id": 21,
+    "GermanWord": "Bus",
+    "EnglishWord": "Bus",
+    "ImagePath": "/images/bus.jpg"
+  },
+  {
+    "Id": 22,
+    "GermanWord": "Straße",
+    "EnglishWord": "Street",
+    "ImagePath": "/images/street.jpg"
+  },
+  {
+    "Id": 23,
+    "GermanWord": "Brücke",
+    "EnglishWord": "Bridge",
+    "ImagePath": "/images/bridge.jpg"
+  },
+  {
+    "Id": 24,
+    "GermanWord": "Markt",
+    "EnglishWord": "Market",
+    "ImagePath": "/images/market.jpg"
+  },
+  {
+    "Id": 25,
+    "GermanWord": "Restaurant",
+    "EnglishWord": "Restaurant",
+    "ImagePath": "/images/restaurant.jpg"
+  },
+  {
+    "Id": 26,
+    "GermanWord": "Bäcker",
+    "EnglishWord": "Baker",
+    "ImagePath": "/images/baker.jpg"
+  },
+  {
+    "Id": 27,
+    "GermanWord": "Fisch",
+    "EnglishWord": "Fish",
+    "ImagePath": "/images/fish.jpg"
+  },
+  {
+    "Id": 28,
+    "GermanWord": "Vogel",
+    "EnglishWord": "Bird",
+    "ImagePath": "/images/bird.jpg"
+  },
+  {
+    "Id": 29,
+    "GermanWord": "Berg",
+    "EnglishWord": "Mountain",
+    "ImagePath": "/images/mountain.jpg"
+  },
+  {
+    "Id": 30,
+    "GermanWord": "Meer",
+    "EnglishWord": "Sea",
+    "ImagePath": "/images/sea.jpg"
+  }
+]
