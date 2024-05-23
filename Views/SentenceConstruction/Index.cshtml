@@ -1,0 +1,133 @@
+﻿@model IEnumerable<maibagamofisa.Models.SentenceConstruction>
+@{
+    ViewData["Title"] = "Sentence Construction Game";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        .game-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .sentence-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .word {
+            margin: 5px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .word:hover {
+                background-color: #e7f1ff;
+            }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .submit-btn:hover {
+                background-color: #0056b3;
+            }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>@ViewData["Title"]</h1>
+        <div id="sentence-box" class="sentence-box"></div>
+        <div id="words-container"></div>
+        <button class="submit-btn" onclick="checkSentence()">Submit</button>
+    </div>
+
+    <script>
+        const sentences = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+        let currentSentenceIndex = 0;
+        let selectedWords = [];
+
+        function displaySentence() {
+            const sentenceBox = document.getElementById('sentence-box');
+            const wordsContainer = document.getElementById('words-container');
+
+            const sentence = sentences[currentSentenceIndex];
+            sentenceBox.innerHTML = '';
+
+            wordsContainer.innerHTML = '';
+            sentence.ShuffledWords.forEach(word => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('word');
+                wordDiv.innerText = word;
+                wordDiv.onclick = () => selectWord(wordDiv, word);
+                wordsContainer.appendChild(wordDiv);
+            });
+        }
+
+        function selectWord(wordDiv, word) {
+            selectedWords.push(word);
+            wordDiv.classList.add('hidden');
+            updateSentenceBox();
+        }
+
+        function updateSentenceBox() {
+            const sentenceBox = document.getElementById('sentence-box');
+            sentenceBox.innerHTML = '';
+            selectedWords.forEach(word => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('word');
+                wordDiv.innerText = word;
+                sentenceBox.appendChild(wordDiv);
+            });
+        }
+
+        function checkSentence() {
+            const sentence = sentences[currentSentenceIndex];
+            const constructedSentence = selectedWords.join(' ');
+
+            if (constructedSentence === sentence.CorrectOrder.join(' ')) {
+                alert('Correct!');
+                currentSentenceIndex++;
+                if (currentSentenceIndex < sentences.length) {
+                    selectedWords = [];
+                    displaySentence();
+                } else {
+                    alert('Congratulations! You have completed the game.');
+                    document.getElementById('sentence-box').innerHTML = '';
+                    document.getElementById('words-container').innerHTML = '';
+                    document.querySelector('.submit-btn').style.display = 'none';
+                }
+            } else {
+                alert('Incorrect, try again!');
+                selectedWords = [];
+                displaySentence();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', displaySentence);
+    </script>
+</body>
+</html>

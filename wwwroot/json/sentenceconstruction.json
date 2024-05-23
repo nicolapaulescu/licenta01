@@ -1,0 +1,27 @@
+[
+  {
+    "Id": 1,
+    "CorrectOrder": [ "Der", "Hund", "ist", "groß" ],
+    "ShuffledWords": [ "Hund", "Der", "groß", "ist" ]
+  },
+  {
+    "Id": 2,
+    "CorrectOrder": [ "Die", "Katze", "schläft" ],
+    "ShuffledWords": [ "schläft", "Die", "Katze" ]
+  },
+  {
+    "Id": 3,
+    "CorrectOrder": [ "Das", "Haus", "ist", "groß" ],
+    "ShuffledWords": [ "Haus", "ist", "Das", "groß" ]
+  },
+  {
+    "Id": 4,
+    "CorrectOrder": [ "Ich", "esse", "einen", "Apfel" ],
+    "ShuffledWords": [ "Apfel", "Ich", "esse", "einen" ]
+  },
+  {
+    "Id": 5,
+    "CorrectOrder": [ "Wir", "gehen", "in", "den", "Park" ],
+    "ShuffledWords": [ "Park", "den", "gehen", "in", "Wir" ]
+  }
+]

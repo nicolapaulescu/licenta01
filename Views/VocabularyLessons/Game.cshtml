@@ -1,39 +1,44 @@
 ﻿@{
     ViewData["Title"] = "Word Pairing Game";
 }
-
-<h1>Word Pairing Game</h1>
-
+    
+<img src="~/images/Random/games.jpg" alt="Title Image" class="header-image">
 <div id="gameCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="game-box">
                 <img src="~/images/gameofwords.jpg" class="d-block w-100" alt="...">
-                <a href="@Url.Action("WordMatching", "WordPairs")" class="btn btn-primary">Start Game 1</a>
+                <div class="overlay">
+                    <div class="text">Word Matching Game</div>
+                    <a href="@Url.Action("WordMatching", "WordPairs")" class="btn btn-primary custom-btn">Start Game 1</a>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
             <div class="game-box">
-                <img src="~/images/picture2.jpg" class="d-block w-100" alt="...">
-                <button class="btn btn-primary">Start Game 2</button>
+                <img src="~/images/Random/pisi.jpg" class="d-block w-100" alt="...">
+                <div class="overlay">
+                    <div class="text">Fill In The Blank</div>
+                    <a href="@Url.Action("Index", "FillInTheBlank")" class="btn btn-primary custom-btn">Start Game 2</a>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
             <div class="game-box">
-                <img src="~/images/picture3.jpg" class="d-block w-100" alt="...">
-                <button class="btn btn-primary">Start Game 3</button>
+                <img src="~/images/Random/pisi2.jpg" class="d-block w-100" alt="...">
+                <div class="overlay">
+                    <div class="text">Sentence Construction</div>
+                    <a href="@Url.Action("Index", "SentenceConstruction")" class="btn btn-primary custom-btn">Start Game 3</a>
+                </div>
             </div>
         </div>
         <div class="carousel-item">
             <div class="game-box">
-                <img src="~/images/picture4.jpg" class="d-block w-100" alt="...">
-                <button class="btn btn-primary">Start Game 4</button>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="game-box">
-                <img src="~/images/picture5.jpg" class="d-block w-100" alt="...">
-                <button class="btn btn-primary">Start Game 5</button>
+                <img src="~/images/Random/pisi3.jpg" class="d-block w-100" alt="...">
+                <div class="overlay">
+                    <div class="text">Picture Word Match</div>
+                    <a href="@Url.Action("Index", "PictureWordMatch")" class="btn btn-primary custom-btn">Start Game 4</a>
+                </div>
             </div>
         </div>
     </div>
@@ -48,9 +53,16 @@
 </div>
 
 <style>
+    .header-image {
+        display: block;
+        margin: 20px auto;
+        width: 300px;
+        max-width: 100%;
+    }
     .carousel-item {
         text-align: center;
         height: 400px; /* Adjust the height as needed */
+        position: relative;
     }
 
     .game-box {
@@ -65,10 +77,39 @@
         .game-box img {
             max-height: 300px; /* Adjust the image height as needed */
             object-fit: cover;
+            width: auto;
         }
 
-        .game-box button {
-            margin-top: 20px;
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Darker overlay */
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .game-box .custom-btn {
+        margin-top: 20px;
+        background-color: #800080; /* Purple color */
+        border-color: #800080; /* Purple color */
+        color: #fff;
+    }
+
+        .game-box .custom-btn:hover {
+            background-color: #D3A3D3; /* Lighter purple color */
+            border-color: #D3A3D3; /* Lighter purple color */
         }
 
     .carousel-control-prev-icon,

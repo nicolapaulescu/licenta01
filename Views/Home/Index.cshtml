@@ -1,10 +1,116 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - [Your App Name]</title>
+    <style>
+        h1 {
+            font-size: 2.5em;
+            margin: 20px 0;
+        }
 
-<div class="text-center">
-    <h1>Welcome to Your Application!</h1>
-    <p>Learn more about ASP.NET Core <a href="https://learn.microsoft.com/aspnet/core">here</a>.</p>
+        .bubble {
+            position: absolute;
+            background-color: #800080;
+            color: white;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .bubble:after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            left: 15%;
+            width: 20%;
+            height: 20%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to [Your App Name]</h1>
+
+    <div class="bubble" style="left: 20%; top: 80%;">Vocabulary</div>
+    <div class="bubble" style="left: 40%; top: 80%;">Grammar</div>
+    <div class="bubble" style="left: 60%; top: 80%;">Games</div>
+    <div class="bubble" style="left: 80%; top: 80%;">Community</div>
+    <div class="bubble" style="left: 30%; top: 80%;">Lessons</div>
+    <div class="bubble" style="left: 50%; top: 80%;">Practice</div>
+
+    <script>
+        // Function to animate bubbles
+        function animateBubble(bubble) {
+            let position = 80;
+            const interval = setInterval(() => {
+                if (position <= -10) {
+                    clearInterval(interval);
+                    bubble.remove();
+                } else {
+                    position -= 0.5;
+                    bubble.style.top = position + '%';
+                }
+            }, 50);
+        }
+
+        // Animate existing bubbles
+        document.querySelectorAll('.bubble').forEach(bubble => {
+            animateBubble(bubble);
+            bubble.addEventListener('click', () => {
+                bubble.style.animation = 'pop 0.5s forwards';
+                setTimeout(() => {
+                    bubble.remove();
+                }, 500);
+            });
+        });
+
+        // Function to create new bubbles periodically
+        function createBubble(text, left) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+            bubble.style.left = left + '%';
+            bubble.style.top = '80%';
+            bubble.textContent = text;
+            document.body.appendChild(bubble);
+            animateBubble(bubble);
+            bubble.addEventListener('click', () => {
+                bubble.style.animation = 'pop 0.5s forwards';
+                setTimeout(() => {
+                    bubble.remove();
+                }, 500);
+            });
+        }
+
+        // Generate new bubbles every few seconds
+        setInterval(() => {
+            const keywords = ['Vocabulary', 'Grammar', 'Games', 'Community', 'Lessons', 'Practice'];
+            const randomIndex = Math.floor(Math.random() * keywords.length);
+            const randomLeft = Math.random() * 80 + 10;
+            createBubble(keywords[randomIndex], randomLeft);
+        }, 3000);
+    </script>
+
+</body>
+</html>
+
 
    @*  <!-- Form for uploading the image -->
     <form method="post" enctype="multipart/form-data">
@@ -23,4 +129,4 @@
             <p>@Html.Raw(ViewBag.ExtractedText)</p>
         }
     </div> *@
-</div>
+

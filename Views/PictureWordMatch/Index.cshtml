@@ -1,0 +1,124 @@
+﻿@model IEnumerable<maibagamofisa.Models.PictureWordMatch>
+@{
+    ViewData["Title"] = "Picture-Word Match Game";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        .game-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .image-container {
+            margin-bottom: 20px;
+        }
+
+        .word {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .word:hover {
+            background-color: #e7f1ff;
+        }
+
+        .selected {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>@ViewData["Title"]</h1>
+        <div id="image-container" class="image-container"></div>
+        <div id="words-container"></div>
+        <button class="submit-btn" onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <script>
+        const matches = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+        let currentMatchIndex = 0;
+        let selectedWord = null;
+
+        function displayMatch() {
+            const imageContainer = document.getElementById('image-container');
+            const wordsContainer = document.getElementById('words-container');
+            
+            const match = matches[currentMatchIndex];
+            imageContainer.innerHTML = `<img src="${match.ImagePath}" alt="Picture" width="200" height="200">`;
+
+            wordsContainer.innerHTML = '';
+            match.Words.forEach(word => {
+                const wordDiv = document.createElement('div');
+                wordDiv.classList.add('word');
+                wordDiv.innerText = word;
+                wordDiv.onclick = () => selectWord(wordDiv, word);
+                wordsContainer.appendChild(wordDiv);
+            });
+        }
+
+        function selectWord(wordDiv, word) {
+            if (selectedWord) {
+                selectedWord.classList.remove('selected');
+            }
+            selectedWord = wordDiv;
+            selectedWord.classList.add('selected');
+        }
+
+        function checkAnswer() {
+            if (!selectedWord) {
+                alert('Please select a word.');
+                return;
+            }
+
+            const match = matches[currentMatchIndex];
+            if (selectedWord.innerText === match.CorrectWord) {
+                alert('Correct!');
+                currentMatchIndex++;
+                if (currentMatchIndex < matches.length) {
+                    selectedWord = null;
+                    displayMatch();
+                } else {
+                    alert('Congratulations! You have completed the game.');
+                    document.getElementById('image-container').innerHTML = '';
+                    document.getElementById('words-container').innerHTML = '';
+                    document.querySelector('.submit-btn').style.display = 'none';
+                }
+            } else {
+                alert('Incorrect, try again!');
+                selectedWord.classList.remove('selected');
+                selectedWord = null;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', displayMatch);
+    </script>
+</body>
+</html>

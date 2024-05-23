@@ -1,7 +1,256 @@
-﻿
-@{
-    ViewData["Title"] = "About Us";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-<h1>About Us</h1>
+        .hero {
+            background: url('path_to_your_hero_image.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
 
+            .hero h1 {
+                font-size: 3em;
+                margin: 0;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+                margin: 10px 0 0;
+            }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .mission {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+            .mission h2 {
+                font-size: 2.5em;
+                margin-bottom: 10px;
+            }
+
+            .mission p {
+                font-size: 1.2em;
+                margin-bottom: 10px;
+            }
+
+        .features {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1;
+            padding: 20px;
+            margin: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+            .feature i {
+                font-size: 2em;
+                color: #800080;
+            }
+
+            .feature h3 {
+                margin: 10px 0;
+                font-size: 1.5em;
+            }
+
+        .testimonials {
+            background: #800080;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .testimonial {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            color: #333;
+            display: inline-block;
+            max-width: 300px;
+            border-radius: 10px;
+        }
+
+            .testimonial img {
+                width: 50px;
+                border-radius: 50%;
+                margin-top: -40px;
+                border: 3px solid #800080;
+            }
+
+        .team {
+            text-align: center;
+            padding: 50px 0;
+        }
+
+            .team h2 {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+
+            .team .member {
+                display: inline-block;
+                margin: 10px;
+                text-align: center;
+            }
+
+            .team img {
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+            }
+
+            .team h3 {
+                margin: 10px 0 5px;
+                font-size: 1.2em;
+            }
+
+        .call-to-action {
+            text-align: center;
+            padding: 50px 0;
+            background: #f4f4f4;
+        }
+
+            .call-to-action h2 {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            .call-to-action a {
+                display: inline-block;
+                padding: 10px 20px;
+                background: #800080;
+                color: white;
+                border-radius: 5px;
+                text-decoration: none;
+                font-size: 1.2em;
+            }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: white;
+        }
+
+            .footer a {
+                color: #800080;
+                text-decoration: none;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <div>
+            <h1>Welcome to DeutschLernenPro</h1>
+            <p>Learn German the easy and fun way!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>To make learning German accessible, enjoyable, and effective for everyone.</p>
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <i class="fas fa-book"></i>
+                <h3>Comprehensive Lessons</h3>
+                <p>Our app offers a wide range of lessons covering vocabulary, grammar, and conversational skills.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gamepad"></i>
+                <h3>Interactive Games</h3>
+                <p>Learn while having fun with our engaging and educational games designed to reinforce your skills.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Community Support</h3>
+                <p>Join our community of learners and get support from fellow users and language experts.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial">
+            <img src="~/images/Random/aleu.jpg" alt="User 1">
+            <p>"This app has transformed my language learning experience! The interactive games are my favorite."</p>
+            <h3>- Alexandra Ngr.</h3>
+        </div>
+        <div class="testimonial">
+            <img src="~/images/Random/aryana.jpg" alt="User 2">
+            <p>"I love the comprehensive lessons and the community support. Highly recommend this app!"</p>
+            <h3>- Aryana Platon</h3>
+        </div>
+        <div class="testimonial">
+            <img src="~/images/Random/alejunior.jpg" alt="User 3">
+            <p>"Learning German has never been this fun and effective. Great job, team!"</p>
+            <h3>- Alexandra Vladutu</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="team">
+            <h2>Meet Our Team</h2>
+            <div class="member">
+                <img src="~/images/Random/nicola.jpg" alt="Paulescu Nicola Maria">
+                <h3>Team Member 1</h3>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="member">
+                <img src="~/images/Random/nicola.jpg" alt="Paulescu Nicola Maria">
+                <h3>Team Member 2</h3>
+                <p>Lead Developer</p>
+            </div>
+            <div class="member">
+                <img src="~/images/Random/nicola.jpg" alt="Paulescu Nicola Maria">
+                <h3>Team Member 3</h3>
+                <p>Language Expert</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="call-to-action">
+        <h2>Ready to Start Learning?</h2>
+        <a href="path_to_signup_page">Join Us Today</a>
+    </div>
+
+    <div class="footer">
+        <p>&copy;2024 DeutschLernenPro . Have fun! | <a href="path_to_privacy_policy">Privacy Policy</a></p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<maibagamofisa.Models.FillInTheBlankPair>
+@{
+    ViewData["Title"] = "Fill in the Blank Game";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        .game-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .sentence {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .options-container {
+            margin: 20px 0;
+        }
+
+        .option {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+            .option:hover {
+                background-color: #e7f1ff;
+            }
+
+            .option.selected {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .submit-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .submit-btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>@ViewData["Title"]</h1>
+        <div id="sentence-container" class="sentence"></div>
+        <div class="options-container" id="options-container"></div>
+        <button class="submit-btn" onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <script>
+        const wordPairs = JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model))');
+        let currentWordIndex = 0;
+        let selectedOption = null;
+
+        function displaySentence() {
+            const sentenceContainer = document.getElementById('sentence-container');
+            const optionsContainer = document.getElementById('options-container');
+
+            const pair = wordPairs[currentWordIndex];
+            sentenceContainer.innerHTML = pair.Sentence.replace('____', '____');
+
+            optionsContainer.innerHTML = '';
+            pair.Options.forEach(option => {
+                const optionDiv = document.createElement('div');
+                optionDiv.classList.add('option');
+                optionDiv.innerText = option;
+                optionDiv.onclick = () => selectOption(optionDiv, option);
+                optionsContainer.appendChild(optionDiv);
+            });
+        }
+
+        function selectOption(optionDiv, option) {
+            if (selectedOption) {
+                selectedOption.classList.remove('selected');
+            }
+            selectedOption = optionDiv;
+            selectedOption.classList.add('selected');
+        }
+
+        function checkAnswer() {
+            if (!selectedOption) {
+                alert('Please select an option.');
+                return;
+            }
+
+            const pair = wordPairs[currentWordIndex];
+            if (selectedOption.innerText === pair.CorrectWord) {
+                alert('Correct!');
+                currentWordIndex++;
+                if (currentWordIndex < wordPairs.length) {
+                    displaySentence();
+                } else {
+                    alert('Congratulations! You have completed the game.');
+                    document.getElementById('sentence-container').innerHTML = '';
+                    document.getElementById('options-container').innerHTML = '';
+                    document.querySelector('.submit-btn').style.display = 'none';
+                }
+            } else {
+                alert('Incorrect, try again!');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', displaySentence);
+    </script>
+</body>
+</html>

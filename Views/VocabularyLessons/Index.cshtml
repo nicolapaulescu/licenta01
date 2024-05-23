@@ -54,11 +54,18 @@
             .purple-button:hover {
                 background-color: #4a148c;
             }
+
+        .header-image {
+            display: block;
+            margin: 20px auto;
+            width: 300px;
+            max-width: 100%;
+        }
     </style>
 
 </head>
 <div class="container">
-    <h2 class="text-center mb-4">Vocabulary Lessons</h2>
+    <img src="~/images/Random/vocabulary.jpg" alt="Title Image" class="header-image">
     <div class="row">
         @foreach (var lesson in Model)
         {

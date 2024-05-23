@@ -1,0 +1,152 @@
+[
+  {
+    "Id": 1,
+    "Sentence": "Der ____ ist rot.",
+    "Options": [ "Apfel", "Hund", "Katze" ],
+    "CorrectWord": "Apfel"
+  },
+  {
+    "Id": 2,
+    "Sentence": "Die ____ ist schwarz.",
+    "Options": [ "Katze", "Apfel", "Haus" ],
+    "CorrectWord": "Katze"
+  },
+  {
+    "Id": 3,
+    "Sentence": "Das ____ ist groß.",
+    "Options": [ "Haus", "Apfel", "Katze" ],
+    "CorrectWord": "Haus"
+  },
+  {
+    "Id": 4,
+    "Sentence": "Der ____ ist schnell.",
+    "Options": [ "Hund", "Apfel", "Katze" ],
+    "CorrectWord": "Hund"
+  },
+  {
+    "Id": 5,
+    "Sentence": "Die ____ ist klein.",
+    "Options": [ "Katze", "Apfel", "Haus" ],
+    "CorrectWord": "Katze"
+  },
+  {
+    "Id": 6,
+    "Sentence": "Ich ____ einen Apfel.",
+    "Options": [ "esse", "trinke", "sehe" ],
+    "CorrectWord": "esse"
+  },
+  {
+    "Id": 7,
+    "Sentence": "Wir gehen ____ Park.",
+    "Options": [ "in den", "auf den", "an den" ],
+    "CorrectWord": "in den"
+  },
+  {
+    "Id": 8,
+    "Sentence": "Sie ____ gerne Bücher.",
+    "Options": [ "liest", "schreibt", "malt" ],
+    "CorrectWord": "liest"
+  },
+  {
+    "Id": 9,
+    "Sentence": "Der Lehrer ____ das Buch.",
+    "Options": [ "liest", "schreibt", "isst" ],
+    "CorrectWord": "liest"
+  },
+  {
+    "Id": 10,
+    "Sentence": "Ich habe ____ Hunger.",
+    "Options": [ "großen", "kleinen", "keinen" ],
+    "CorrectWord": "großen"
+  },
+  {
+    "Id": 11,
+    "Sentence": "Das Kind spielt ____ Ball.",
+    "Options": [ "mit dem", "an dem", "auf dem" ],
+    "CorrectWord": "mit dem"
+  },
+  {
+    "Id": 12,
+    "Sentence": "Der ____ fährt schnell.",
+    "Options": [ "Zug", "Apfel", "Katze" ],
+    "CorrectWord": "Zug"
+  },
+  {
+    "Id": 13,
+    "Sentence": "Wir wohnen in einem ____.",
+    "Options": [ "Haus", "Auto", "Baum" ],
+    "CorrectWord": "Haus"
+  },
+  {
+    "Id": 14,
+    "Sentence": "Die ____ ist süß.",
+    "Options": [ "Katze", "Brot", "Tisch" ],
+    "CorrectWord": "Katze"
+  },
+  {
+    "Id": 15,
+    "Sentence": "Er spielt ____ Gitarre.",
+    "Options": [ "die", "das", "der" ],
+    "CorrectWord": "die"
+  },
+  {
+    "Id": 16,
+    "Sentence": "Der ____ kocht das Essen.",
+    "Options": [ "Koch", "Lehrer", "Schüler" ],
+    "CorrectWord": "Koch"
+  },
+  {
+    "Id": 17,
+    "Sentence": "Das Auto ist ____.",
+    "Options": [ "schnell", "groß", "rot" ],
+    "CorrectWord": "schnell"
+  },
+  {
+    "Id": 18,
+    "Sentence": "Sie trinkt ____ Wasser.",
+    "Options": [ "viel", "wenig", "schnell" ],
+    "CorrectWord": "viel"
+  },
+  {
+    "Id": 19,
+    "Sentence": "Der ____ fliegt hoch.",
+    "Options": [ "Vogel", "Fisch", "Baum" ],
+    "CorrectWord": "Vogel"
+  },
+  {
+    "Id": 20,
+    "Sentence": "Wir haben ____ Hunger.",
+    "Options": [ "großen", "kleinen", "vielen" ],
+    "CorrectWord": "großen"
+  },
+  {
+    "Id": 21,
+    "Sentence": "Die Blumen sind ____.",
+    "Options": [ "schön", "süß", "laut" ],
+    "CorrectWord": "schön"
+  },
+  {
+    "Id": 22,
+    "Sentence": "Der ____ arbeitet im Krankenhaus.",
+    "Options": [ "Arzt", "Lehrer", "Koch" ],
+    "CorrectWord": "Arzt"
+  },
+  {
+    "Id": 23,
+    "Sentence": "Das ____ ist leer.",
+    "Options": [ "Glas", "Auto", "Tisch" ],
+    "CorrectWord": "Glas"
+  },
+  {
+    "Id": 24,
+    "Sentence": "Wir ____ nach Berlin.",
+    "Options": [ "fahren", "laufen", "essen" ],
+    "CorrectWord": "fahren"
+  },
+  {
+    "Id": 25,
+    "Sentence": "Er ____ den Ball.",
+    "Options": [ "wirft", "isst", "liest" ],
+    "CorrectWord": "wirft"
+  }
+]

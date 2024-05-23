@@ -4,8 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<img src="~/images/Random/chat.jpg" alt="Title Image" class="header-image">
 <div class="container">
     @foreach (var item in Model)
     {
@@ -56,6 +55,12 @@
 </div>
 
 <style>
+    .header-image {
+        display: block;
+        margin: 20px auto;
+        width: 300px;
+        max-width: 100%;
+    }
     .chat-box {
         border: 1px solid #ccc;
         border-radius: 10px;

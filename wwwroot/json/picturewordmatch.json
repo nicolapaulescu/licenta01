@@ -1,0 +1,117 @@
+[
+  {
+    "Id": 1,
+    "ImagePath": "/images/Animals/caine.jpg",
+    "CorrectWord": "Hund",
+    "Words": [ "Hund", "Katze", "Apfel" ]
+  },
+  {
+    "Id": 2,
+    "ImagePath": "/images/Animals/pisica.jpg",
+    "CorrectWord": "Katze",
+    "Words": [ "Hund", "Katze", "Apfel" ]
+  },
+  {
+    "Id": 3,
+    "ImagePath": "/images/Animals/pasare.jpg",
+    "CorrectWord": "Vogel",
+    "Words": [ "Vogel", "Auto", "Blume" ]
+  },
+  {
+    "Id": 4,
+    "ImagePath": "/images/Animals/elefant.jpg",
+    "CorrectWord": "Elefant",
+    "Words": [ "Elefant", "Giraffe", "Zebra" ]
+  },
+  {
+    "Id": 5,
+    "ImagePath": "/images/Animals/leu.jpg",
+    "CorrectWord": "Löwe",
+    "Words": [ "Löwe", "Tiger", "Bär" ]
+  },
+  {
+    "Id": 6,
+    "ImagePath": "/images/Fruits/mere.jpg",
+    "CorrectWord": "Apfel",
+    "Words": [ "Hund", "Katze", "Apfel" ]
+  },
+  {
+    "Id": 7,
+    "ImagePath": "/images/Fruits/banane.jpg",
+    "CorrectWord": "Banane",
+    "Words": [ "Banane", "Orange", "Traube" ]
+  },
+  {
+    "Id": 8,
+    "ImagePath": "/images/Fruits/paine.jpg",
+    "CorrectWord": "Brot",
+    "Words": [ "Brot", "Käse", "Wurst" ]
+  },
+  {
+    "Id": 9,
+    "ImagePath": "/images/Fruits/cascaval.jpg",
+    "CorrectWord": "Käse",
+    "Words": [ "Käse", "Milch", "Butter" ]
+  },
+  {
+    "Id": 10,
+    "ImagePath": "/images/Vegetables/morcovi.jpg",
+    "CorrectWord": "Karotte",
+    "Words": [ "Karotte", "Apfel", "Banane" ]
+  },
+  {
+    "Id": 11,
+    "ImagePath": "/images/House/masina.jpg",
+    "CorrectWord": "Auto",
+    "Words": [ "Auto", "Haus", "Tisch" ]
+  },
+  {
+    "Id": 12,
+    "ImagePath": "/images/House/Casa.jpg",
+    "CorrectWord": "Haus",
+    "Words": [ "Haus", "Buch", "Apfel" ]
+  },
+  {
+    "Id": 13,
+    "ImagePath": "/images/House/carte.jpg",
+    "CorrectWord": "Buch",
+    "Words": [ "Buch", "Katze", "Hund" ]
+  },
+  {
+    "Id": 14,
+    "ImagePath": "/images/House/scaun.jpg",
+    "CorrectWord": "Stuhl",
+    "Words": [ "Stuhl", "Tisch", "Buch" ]
+  },
+  {
+    "Id": 15,
+    "ImagePath": "/images/House/masa.jpg",
+    "CorrectWord": "Tisch",
+    "Words": [ "Tisch", "Blume", "Auto" ]
+  },
+  {
+    "Id": 16,
+    "ImagePath": "/images/Fruits/floare.jpg",
+    "CorrectWord": "Blume",
+    "Words": [ "Blume", "Auto", "Tisch" ]
+  },
+  {
+    "Id": 17,
+    "ImagePath": "/images/House/copac.jpg",
+    "CorrectWord": "Baum",
+    "Words": [ "Baum", "Vogel", "Apfel" ]
+  },
+  {
+    "Id": 18,
+    "ImagePath": "/images/House/munti.jpg",
+    "CorrectWord": "Berg",
+    "Words": [ "Berg", "Tisch", "Blume" ]
+  },
+  {
+    "Id": 19,
+    "ImagePath": "/images/House/rau.jpg",
+    "CorrectWord": "Fluss",
+    "Words": [ "Fluss", "See", "Ozean" ]
+  },
+  
+]
