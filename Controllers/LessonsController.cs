@@ -1,27 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Security.Claims;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using maibagamofisa.Models;
-public class UserProgress
-{
-    public string UserId { get; set; }
-    public int LessonId { get; set; }
-    public bool IsCompleted { get; set; }
-}
+using Microsoft.AspNetCore.Authorization;
 
+[Authorize]  // This will restrict access to all actions in this controller
 public class LessonsController : Controller
 {
     private readonly IWebHostEnvironment _hostingEnvironment;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public LessonsController(IWebHostEnvironment hostingEnvironment)
+    public LessonsController(IWebHostEnvironment hostingEnvironment, UserManager<IdentityUser> userManager)
     {
         _hostingEnvironment = hostingEnvironment;
+        _userManager = userManager;
     }
 
     public async Task<IActionResult> Index()
     {
         var lessons = await GetLessonsAsync();
-        return View(lessons); // Passing a list of Lesson objects
+        return View(lessons);
     }
 
     public async Task<IActionResult> Details(int id)
@@ -32,7 +35,33 @@ public class LessonsController : Controller
         {
             return NotFound();
         }
-        return View(lesson); // Passing a single Lesson object
+        return View(lesson);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CompleteLesson(int lessonId)
+    {
+        var userId = _userManager.GetUserId(User);
+        var progress = await GetUserProgressAsync();
+        var userProgress = progress.FirstOrDefault(p => p.UserId == userId && p.LessonId == lessonId);
+
+        if (userProgress == null)
+        {
+            userProgress = new UserProgress
+            {
+                UserId = userId,
+                LessonId = lessonId,
+                IsCompleted = true
+            };
+            progress.Add(userProgress);
+        }
+        else
+        {
+            userProgress.IsCompleted = true;
+        }
+
+        await SaveUserProgressAsync(progress);
+        return RedirectToAction("Details", new { id = lessonId });
     }
 
     private async Task<List<Lesson>> GetLessonsAsync()
@@ -42,21 +71,21 @@ public class LessonsController : Controller
         return JsonConvert.DeserializeObject<List<Lesson>>(jsonData);
     }
 
-    private async Task SaveLessonsAsync(List<Lesson> lessons)
+    private async Task<List<UserProgress>> GetUserProgressAsync()
     {
-        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "json", "lessons.json");
-        var jsonData = JsonConvert.SerializeObject(lessons, Formatting.Indented);
-        await System.IO.File.WriteAllTextAsync(filePath, jsonData);
+        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "json", "userProgress.json");
+        if (!System.IO.File.Exists(filePath))
+        {
+            return new List<UserProgress>();
+        }
+        var jsonData = await System.IO.File.ReadAllTextAsync(filePath);
+        return JsonConvert.DeserializeObject<List<UserProgress>>(jsonData);
     }
 
-    public IActionResult SpeechToText()
-        {
-            return View();
-        }
+    private async Task SaveUserProgressAsync(List<UserProgress> progress)
+    {
+        var filePath = Path.Combine(_hostingEnvironment.WebRootPath, "json", "userProgress.json");
+        var jsonData = JsonConvert.SerializeObject(progress, Formatting.Indented);
+        await System.IO.File.WriteAllTextAsync(filePath, jsonData);
+    }
 }
-
-
-
-
-
-

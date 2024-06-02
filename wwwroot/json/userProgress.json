@@ -1,9 +1,22 @@
-
 [
   {
-    "UserId": "user1",
+    "UserId": null,
     "LessonId": 1,
     "IsCompleted": true
+  },
+  {
+    "UserId": null,
+    "LessonId": 2,
+    "IsCompleted": true
+  },
+  {
+    "UserId": "ce5d734e-4ef6-4a17-950e-53942f89b340",
+    "LessonId": 1,
+    "IsCompleted": true
+  },
+  {
+    "UserId": "ce5d734e-4ef6-4a17-950e-53942f89b340",
+    "LessonId": 2,
+    "IsCompleted": true
   }
-  // Add more progress records...
 ]

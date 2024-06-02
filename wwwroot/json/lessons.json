@@ -1,19 +1,36 @@
 [
   {
     "Id": 1,
-    "Title": "Introduction to German",
-    "Content": "Welcome to your first German lesson!",
+    "Title": "Lesson 1",
+    "Content": "This is the content of lesson 1.",
     "Exercises": [
       {
         "Id": 1,
-        "Question": "What is the German word for 'apple'?",
-        "Options": [ "Apfel", "Banane", "Orange" ],
-        "CorrectAnswer": "Apfel",
-        "Type": "MultipleChoice"
+        "Question": "What is the capital of Germany?",
+        "Options": [ "Berlin", "Munich", "Frankfurt" ],
+        "CorrectAnswer": "Berlin"
+      },
+      {
+        "Id": 2,
+        "Question": "What is the color of the sky?",
+        "Options": [ "Blue", "Green", "Red" ],
+        "CorrectAnswer": "Blue"
       }
-      // Add more exercises...
+    ],
+    "IsCompleted": false
+  },
+  {
+    "Id": 2,
+    "Title": "Lesson 2",
+    "Content": "This is the content of lesson 2.",
+    "Exercises": [
+      {
+        "Id": 1,
+        "Question": "What is the capital of France?",
+        "Options": [ "Paris", "Lyon", "Marseille" ],
+        "CorrectAnswer": "Paris"
+      }
     ],
     "IsCompleted": false
   }
-  // Add more lessons...
 ]

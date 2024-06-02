@@ -1,4 +1,4 @@
-﻿using maibagamofisa.Data;
+using maibagamofisa.Data;
 using maibagamofisa.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +23,15 @@ builder.Services.AddControllersWithViews();
 var conn = "Data Source=DESKTOP-B3L12D9\\SQLEXPRESS;Initial Catalog=deutschlernenpro;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 builder.Services.AddDbContext<DeutschlernenproContext>(options => options.UseSqlServer(conn));
 
+
+// Add this block to enforce authentication globally
+builder.Services.AddRazorPages()
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeFolder("/");
+    });
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -42,6 +51,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Ensure the app uses authentication
 app.UseAuthorization();
 
 app.MapControllerRoute(

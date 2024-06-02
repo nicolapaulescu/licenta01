@@ -18,15 +18,29 @@
             <p>@exercise.Question</p>
             @foreach (var option in exercise.Options)
             {
-                <button onclick="checkAnswer('@exercise.Id', '@option')">@option</button>
+                <button class="option-button" data-exercise-id="@exercise.Id" data-correct-answer="@exercise.CorrectAnswer">@option</button>
             }
         </div>
     }
 </div>
 
+<form method="post" asp-action="CompleteLesson" asp-route-lessonId="@Model.Id">
+    <button type="submit" class="btn btn-primary">Complete Lesson</button>
+</form>
+
 <script>
-    function checkAnswer(exerciseId, selectedOption) {
-        // Implement answer checking logic and feedback
-        console.log(exerciseId, selectedOption);
-    }
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".option-button");
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                const exerciseId = this.getAttribute("data-exercise-id");
+                const correctAnswer = this.getAttribute("data-correct-answer");
+                if (this.textContent.trim() === correctAnswer) {
+                    alert("Correct!");
+                } else {
+                    alert("Incorrect, try again!");
+                }
+            });
+        });
+    });
 </script>

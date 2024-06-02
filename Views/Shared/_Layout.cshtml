@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿<!--add from the login step-->
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,9 +26,23 @@
         <a class="nav-link text-dark" asp-area="" asp-controller="Dialogues" asp-action="Index">Dialogue Lessons</a>    
         <a class="nav-link text-dark" asp-area="" asp-controller="Lessons" asp-action="Index">Lessons</a>
 
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <!-- If the user is signed in, display their name and a logout button -->
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        }
+        else
+        {
+            <!-- If the user is not signed in, display links to login and register pages -->
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        }
+
         
-        <partial name="_LoginPartial" />
-        <!-- Add more links as needed -->
+        <!-- Add more links as needed <partial name="_LoginPartial" /> -->
     </div>
 
     <!-- Toggle Button -->
