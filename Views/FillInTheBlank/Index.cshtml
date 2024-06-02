@@ -84,17 +84,28 @@
                 const optionDiv = document.createElement('div');
                 optionDiv.classList.add('option');
                 optionDiv.innerText = option;
-                optionDiv.onclick = () => selectOption(optionDiv, option);
+                optionDiv.onclick = () => selectAndSpeakOption(optionDiv, option);
                 optionsContainer.appendChild(optionDiv);
             });
         }
 
-        function selectOption(optionDiv, option) {
+        function selectAndSpeakOption(optionDiv, option) {
             if (selectedOption) {
                 selectedOption.classList.remove('selected');
             }
             selectedOption = optionDiv;
             selectedOption.classList.add('selected');
+            speakOption(option);
+        }
+
+        function speakOption(option) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(option);
+                utterance.lang = 'de-DE';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Speech Synthesis not supported in this browser.');
+            }
         }
 
         function checkAnswer() {
@@ -108,6 +119,7 @@
                 alert('Correct!');
                 currentWordIndex++;
                 if (currentWordIndex < wordPairs.length) {
+                    selectedOption = null;
                     displaySentence();
                 } else {
                     alert('Congratulations! You have completed the game.');

@@ -1,0 +1,19 @@
+[
+  {
+    "Id": 1,
+    "Title": "Introduction to German",
+    "Content": "Welcome to your first German lesson!",
+    "Exercises": [
+      {
+        "Id": 1,
+        "Question": "What is the German word for 'apple'?",
+        "Options": [ "Apfel", "Banane", "Orange" ],
+        "CorrectAnswer": "Apfel",
+        "Type": "MultipleChoice"
+      }
+      // Add more exercises...
+    ],
+    "IsCompleted": false
+  }
+  // Add more lessons...
+]

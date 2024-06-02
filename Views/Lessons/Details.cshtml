@@ -1,0 +1,32 @@
+﻿@model maibagamofisa.Models.Lesson
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<h1>@Model.Title</h1>
+
+<div>
+    <p>@Model.Content</p>
+</div>
+
+<div>
+    <h3>Exercises</h3>
+    @foreach (var exercise in Model.Exercises)
+    {
+        <div>
+            <p>@exercise.Question</p>
+            @foreach (var option in exercise.Options)
+            {
+                <button onclick="checkAnswer('@exercise.Id', '@option')">@option</button>
+            }
+        </div>
+    }
+</div>
+
+<script>
+    function checkAnswer(exerciseId, selectedOption) {
+        // Implement answer checking logic and feedback
+        console.log(exerciseId, selectedOption);
+    }
+</script>

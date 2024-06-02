@@ -6,17 +6,17 @@
 
 <h1 class="title">@Model.Title</h1>
 
-<div class="content">
+<div class="content" id="dialogueContent">
     @Html.DisplayFor(model => model.Content)
 </div>
 
 @if (!string.IsNullOrEmpty(Model.Questions))
 {
     var questions = Model.Questions.Split(';');
-    <div class="questions">
+    <div class="questions" id="questions">
         @for (int i = 0; i < questions.Length; i++)
         {
-            <div class="question @(i % 2 == 0 ? "left" : "right")">
+            <div class="question @(i % 2 == 0 ? "left" : "right")" data-index="@i">
                 @questions[i]
             </div>
         }
@@ -28,6 +28,7 @@ else
 }
 
 <div class="action-links">
+    <button class="btn btn-primary" onclick="readNextLine()">Read Next Line</button>
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a>
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
 </div>
@@ -64,16 +65,16 @@ else
         font-size: 1em;
         color: white;
         word-wrap: break-word;
+        background-color: #D3A3D3; /* Light purple color */
     }
 
         .question.left {
             align-self: flex-start;
-            background-color: #007bff;
         }
 
         .question.right {
             align-self: flex-end;
-            background-color: #6c757d;
+            background-color: #B890B8; /* Slightly darker purple for alternating lines */
         }
 
     .no-questions {
@@ -91,3 +92,28 @@ else
             margin: 0 10px;
         }
 </style>
+
+<script>
+    let currentLineIndex = 0;
+    const lines = Array.from(document.querySelectorAll('.question'));
+
+    function readNextLine() {
+        if (currentLineIndex < lines.length) {
+            const line = lines[currentLineIndex].innerText;
+            speakLine(line);
+            currentLineIndex++;
+        } else {
+            alert('End of dialogue.');
+        }
+    }
+
+    function speakLine(line) {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(line);
+            utterance.lang = 'de-DE'; // Adjust the language code as needed
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert('Speech Synthesis not supported in this browser.');
+        }
+    }
+</script>

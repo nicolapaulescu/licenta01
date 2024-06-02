@@ -70,6 +70,7 @@
 </head>
 <body>
     <div class="game-container">
+        <h1>@ViewData["Title"]</h1>
         <div class="columns-container">
             <div class="column" id="german-words"></div>
             <div class="column" id="english-words"></div>
@@ -104,7 +105,7 @@
                 germanDiv.dataset.id = pair.Id;
                 germanDiv.dataset.type = 'german';
                 germanDiv.innerText = pair.GermanWord;
-                germanDiv.onclick = handleWordClick;
+                germanDiv.onclick = () => handleGermanWordClick(germanDiv, pair.GermanWord);
                 germanContainer.appendChild(germanDiv);
             });
 
@@ -114,7 +115,7 @@
                 englishDiv.dataset.id = pair.Id;
                 englishDiv.dataset.type = 'english';
                 englishDiv.innerText = pair.EnglishWord;
-                englishDiv.onclick = handleWordClick;
+                englishDiv.onclick = handleEnglishWordClick;
                 englishContainer.appendChild(englishDiv);
             });
         }
@@ -122,17 +123,32 @@
         let selectedGerman = null;
         let selectedEnglish = null;
 
-        function handleWordClick() {
-            if (this.dataset.type === 'german') {
-                if (selectedGerman) selectedGerman.classList.remove('selected');
-                selectedGerman = this;
-                selectedGerman.classList.add('selected');
-            } else {
-                if (selectedEnglish) selectedEnglish.classList.remove('selected');
-                selectedEnglish = this;
-                selectedEnglish.classList.add('selected');
-            }
+        function handleGermanWordClick(wordDiv, word) {
+            speakWord(word);
+            if (selectedGerman) selectedGerman.classList.remove('selected');
+            selectedGerman = wordDiv;
+            selectedGerman.classList.add('selected');
+            checkMatch();
+        }
 
+        function handleEnglishWordClick() {
+            if (selectedEnglish) selectedEnglish.classList.remove('selected');
+            selectedEnglish = this;
+            selectedEnglish.classList.add('selected');
+            checkMatch();
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'de-DE';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Speech Synthesis not supported in this browser.');
+            }
+        }
+
+        function checkMatch() {
             if (selectedGerman && selectedEnglish) {
                 if (selectedGerman.dataset.id === selectedEnglish.dataset.id) {
                     selectedGerman.classList.add('correct');

@@ -1,0 +1,9 @@
+
+[
+  {
+    "UserId": "user1",
+    "LessonId": 1,
+    "IsCompleted": true
+  }
+  // Add more progress records...
+]

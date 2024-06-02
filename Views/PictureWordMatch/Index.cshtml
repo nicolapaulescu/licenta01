@@ -29,9 +29,9 @@
             transition: all 0.3s ease;
         }
 
-        .word:hover {
-            background-color: #e7f1ff;
-        }
+            .word:hover {
+                background-color: #e7f1ff;
+            }
 
         .selected {
             background-color: #007bff;
@@ -49,9 +49,9 @@
             margin-top: 20px;
         }
 
-        .submit-btn:hover {
-            background-color: #0056b3;
-        }
+            .submit-btn:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
@@ -70,7 +70,7 @@
         function displayMatch() {
             const imageContainer = document.getElementById('image-container');
             const wordsContainer = document.getElementById('words-container');
-            
+
             const match = matches[currentMatchIndex];
             imageContainer.innerHTML = `<img src="${match.ImagePath}" alt="Picture" width="200" height="200">`;
 
@@ -79,17 +79,28 @@
                 const wordDiv = document.createElement('div');
                 wordDiv.classList.add('word');
                 wordDiv.innerText = word;
-                wordDiv.onclick = () => selectWord(wordDiv, word);
+                wordDiv.onclick = () => selectAndSpeakWord(wordDiv, word);
                 wordsContainer.appendChild(wordDiv);
             });
         }
 
-        function selectWord(wordDiv, word) {
+        function selectAndSpeakWord(wordDiv, word) {
             if (selectedWord) {
                 selectedWord.classList.remove('selected');
             }
             selectedWord = wordDiv;
             selectedWord.classList.add('selected');
+            speakWord(word);
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'de-DE';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Speech Synthesis not supported in this browser.');
+            }
         }
 
         function checkAnswer() {

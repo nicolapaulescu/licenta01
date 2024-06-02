@@ -82,15 +82,16 @@
                 const wordDiv = document.createElement('div');
                 wordDiv.classList.add('word');
                 wordDiv.innerText = word;
-                wordDiv.onclick = () => selectWord(wordDiv, word);
+                wordDiv.onclick = () => selectAndSpeakWord(wordDiv, word);
                 wordsContainer.appendChild(wordDiv);
             });
         }
 
-        function selectWord(wordDiv, word) {
+        function selectAndSpeakWord(wordDiv, word) {
             selectedWords.push(word);
             wordDiv.classList.add('hidden');
             updateSentenceBox();
+            speakWord(word);
         }
 
         function updateSentenceBox() {
@@ -102,6 +103,16 @@
                 wordDiv.innerText = word;
                 sentenceBox.appendChild(wordDiv);
             });
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'de-DE';
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Speech Synthesis not supported in this browser.');
+            }
         }
 
         function checkSentence() {
