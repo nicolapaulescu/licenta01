@@ -1,14 +1,21 @@
-﻿using System.Collections.Generic;
-
-namespace maibagamofisa.Models
+﻿namespace maibagamofisa.Models
 {
-    public class Lesson
+    public class Chapter01
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public int Order { get; set; }
+        public List<Lesson01> Lessons { get; set; } = new List<Lesson01>();
+    }
+
+    public class Lesson01
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
-        public List<Exercise> Exercises { get; set; }
         public bool IsCompleted { get; set; }
+        public List<Exercise> Exercises { get; set; } = new List<Exercise>();
     }
 
     public class Exercise
@@ -24,6 +31,7 @@ namespace maibagamofisa.Models
     {
         MultipleChoice,
         FillInTheBlank,
-        Matching
+        Listening,
+        SentenceConstruction
     }
 }

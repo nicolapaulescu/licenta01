@@ -1,0 +1,97 @@
+﻿@model IEnumerable<maibagamofisa.Models.Chapter01>
+
+@{
+    ViewData["Title"] = "Chapters";
+}
+
+
+
+<div class="chapter-container">
+    @foreach (var item in Model)
+    {
+        <div class="chapter-box">
+            <div class="chapter-image-container">
+                <img src="@item.Description" alt="Chapter Image">
+                <div class="chapter-overlay">
+                    @{
+                        var titles = item.Title.Split('/');
+                        var germanTitle = titles.Length > 0 ? titles[0] : "";
+                        var englishTitle = titles.Length > 1 ? titles[1] : "";
+                    }
+                    <div class="chapter-title">@germanTitle</div>
+                    <div class="chapter-subtitle">@englishTitle</div>
+                </div>
+            </div>
+            <a asp-action="Lessons" asp-route-id="@item.Id" class="btn btn-purple">Details</a>
+        </div>
+    }
+</div>
+
+<style>
+    .chapter-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .chapter-box {
+        position: relative;
+        width: 300px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .chapter-image-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chapter-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s;
+    }
+
+    .chapter-box:hover img {
+        transform: scale(1.1);
+    }
+
+    .chapter-overlay {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .chapter-title {
+        font-size: 1.2em;
+        font-weight: bold;
+    }
+
+    .chapter-subtitle {
+        font-size: 1em;
+        color: #ddd;
+    }
+
+    .btn.btn-purple {
+        background-color: #800080;
+        border-color: #800080;
+        color: white;
+        margin-top: 10px;
+    }
+
+        .btn.btn-purple:hover {
+            background-color: #9932CC;
+            border-color: #9932CC;
+            color: white;
+        }
+</style>

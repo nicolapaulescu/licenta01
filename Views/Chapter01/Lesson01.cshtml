@@ -1,0 +1,52 @@
+﻿@model IEnumerable<maibagamofisa.Models.Lesson01>
+
+@{
+    ViewData["Title"] = "Lessons";
+}
+
+<h1>Lessons</h1>
+
+<div class="lesson-container">
+    @foreach (var lesson in Model)
+    {
+        <div class="lesson-box">
+            <h2>@lesson.Title</h2>
+            <p>@lesson.Content</p>
+            <a asp-action="Exercises" asp-route-lessonId="@lesson.Id" class="btn btn-primary">Start Exercises</a>
+        </div>
+    }
+</div>
+
+<style>
+    .lesson-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .lesson-box {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 20px;
+        width: 250px;
+        height: 200px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+        .lesson-box:hover {
+            transform: scale(1.05);
+        }
+
+        .lesson-box h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .lesson-box p {
+            font-size: 1em;
+            color: #777;
+        }
+</style>

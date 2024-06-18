@@ -57,6 +57,7 @@
             padding: 5px 10px;
             border-radius: 5px;
             z-index: 1; /* Ensure it's above the image */
+            cursor: pointer; /* Add cursor pointer */
         }
 
         .color-item:hover .color-text,
@@ -72,12 +73,19 @@
             <div class="color-item">
                 <img src="@color.ImagePath" alt="@color.EnglishName" />
                 <div class="color-text">@color.EnglishName</div>
-                <div class="color-text-german">@color.GermanName</div>
+                <div class="color-text-german" onclick="speakText('@color.GermanName')">@color.GermanName</div>
             </div>
         }
     </div>
-    <p>
-        <a asp-action="Create">Create New</a>
-    </p>
+    
+
+    <script>
+        function speakText(text) {
+            const speechSynthesis = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE'; // Set language to German
+            speechSynthesis.speak(utterance);
+        }
+    </script>
 </body>
 </html>

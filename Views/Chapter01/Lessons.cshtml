@@ -1,0 +1,90 @@
+﻿@model IEnumerable<maibagamofisa.Models.Lesson01>
+
+@{
+    ViewData["Title"] = "Lessons";
+}
+
+
+<div class="lesson-container">
+    @foreach (var lesson in Model)
+    {
+        <div class="lesson-box @(Model.ToList().IndexOf(lesson) % 2 == 0 ? "left" : "right")">
+            <h2>@lesson.Title</h2>
+            <p>@lesson.Content</p>
+            <a asp-action="Exercises" asp-route-lessonId="@lesson.Id" class="btn btn-primary">Start Exercises</a>
+        </div>
+    }
+    <div class="line"></div>
+</div>
+
+<style>
+    .lesson-container {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .lesson-box {
+        background-color: #800080; /* Purple background color */
+        color: white; /* White text color */
+        border: 1px solid #4B0082; /* Darker purple border */
+        border-radius: 10px;
+        margin: 20px 0;
+        padding: 20px;
+        width: 40%;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transition: transform 0.2s;
+    }
+
+        .lesson-box.left {
+            float: left;
+            clear: right;
+        }
+
+        .lesson-box.right {
+            float: right;
+            clear: left;
+        }
+
+        .lesson-box:hover {
+            transform: scale(1.05);
+        }
+
+        .lesson-box h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .lesson-box p {
+            font-size: 1em;
+            color: #EEE; /* Light text color */
+        }
+
+        .lesson-box a.btn-primary {
+            background-color: #4B0082; /* Darker purple button */
+            border-color: #4B0082; /* Darker purple border */
+        }
+
+            .lesson-box a.btn-primary:hover {
+                background-color: #9932CC; /* Lighter purple on hover */
+                border-color: #9932CC; /* Lighter purple on hover */
+            }
+
+    .line {
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background-color: #4B0082; /* Darker purple for the line */
+        top: 0;
+        transform: translateX(-50%);
+    }
+
+    .lesson-container::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+</style>

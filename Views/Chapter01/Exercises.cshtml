@@ -1,0 +1,255 @@
+﻿@model maibagamofisa.Models.Lesson01
+
+@{
+    ViewData["Title"] = "Exercises";
+}
+
+
+
+<div id="exercise-container">
+    @foreach (var exercise in Model.Exercises)
+    {
+        <div class="exercise" data-exercise-id="@exercise.Id">
+            @if (exercise.Type != maibagamofisa.Models.ExerciseType.Listening)
+            {
+                <p class="exercise-question">@exercise.Question</p>
+            }
+
+            @if (exercise.Type == maibagamofisa.Models.ExerciseType.SentenceConstruction)
+            {
+                <div class="sentence-construction-container">
+                    <p>Construct the sentence:</p>
+                    <div class="available-words">
+                        @foreach (var word in exercise.Options)
+                        {
+                            <button class="word-option">@word</button>
+                        }
+                    </div>
+                    <div class="constructed-sentence">
+                        <p id="constructed-sentence-@exercise.Id"></p>
+                    </div>
+                    <button class="clear-sentence" onclick="clearSentence(@exercise.Id)">Clear</button>
+                </div>
+            }
+            else if (exercise.Type == maibagamofisa.Models.ExerciseType.FillInTheBlank)
+            {
+                <div class="fill-in-the-blank-container">
+                    @{
+                        var parts = exercise.Question.Split("_");
+                        <span>@parts[0]</span>
+                        <span id="blank-@exercise.Id" class="blank"></span>
+                        <span>@parts[1]</span>
+                    }
+                    <div class="exercise-options">
+                        @foreach (var option in exercise.Options)
+                        {
+                            <button class="exercise-option" onclick="fillBlank(@exercise.Id, '@option')">@option</button>
+                        }
+                    </div>
+                </div>
+            }
+            else if (exercise.Type == maibagamofisa.Models.ExerciseType.Listening)
+            {
+                <div class="listening-container">
+                    <button onclick="playAudio('@exercise.Question')">Play Audio</button>
+                    <div class="exercise-options">
+                        @foreach (var option in exercise.Options)
+                        {
+                            <button class="exercise-option" onclick="selectOption(this, '@option', 'de-DE')">@option</button>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="exercise-options">
+                    @foreach (var option in exercise.Options)
+                    {
+                        <button class="exercise-option" onclick="selectOption(this, '@option', 'de-DE')">@option</button>
+                    }
+                </div>
+            }
+
+            <button class="submit-answer" onclick="submitAnswer(@exercise.Id, '@exercise.Type')">Submit Answer</button>
+        </div>
+    }
+</div>
+
+<div id="completion-message" style="display: none;">
+    <h2>Congratulations! You have completed all exercises.</h2>
+</div>
+
+@section Scripts {
+    <script>
+        function speakText(text, lang) {
+            const speech = new SpeechSynthesisUtterance(text);
+            speech.lang = lang;
+            window.speechSynthesis.speak(speech);
+        }
+
+        function playAudio(text) {
+            speakText(text, 'de-DE');
+        }
+
+        function submitAnswer(exerciseId, exerciseType) {
+            let userAnswer;
+
+            if (exerciseType === '@maibagamofisa.Models.ExerciseType.SentenceConstruction') {
+                userAnswer = $(`#constructed-sentence-${exerciseId}`).text().trim();
+            } else if (exerciseType === '@maibagamofisa.Models.ExerciseType.FillInTheBlank') {
+                userAnswer = $(`#blank-${exerciseId}`).text().trim();
+            } else {
+                userAnswer = $(`div[data-exercise-id=${exerciseId}] .exercise-options .exercise-option.selected`).text().trim();
+            }
+
+            $.post('@Url.Action("CheckAnswer", "Chapter01")', { lessonId: @Model.Id, exerciseId: exerciseId, userAnswer: userAnswer }, function (data) {
+                if (data.isCorrect) {
+                    alert("Correct!");
+                    $(`div[data-exercise-id=${exerciseId}]`).hide();
+                    if (data.nextExerciseId) {
+                        $(`div[data-exercise-id=${data.nextExerciseId}]`).show();
+                    } else {
+                        $('#completion-message').show();
+                    }
+                } else {
+                    alert("Incorrect. Try again!");
+                }
+            });
+        }
+
+        function clearSentence(exerciseId) {
+            $(`#constructed-sentence-${exerciseId}`).empty();
+        }
+
+        function fillBlank(exerciseId, word) {
+            $(`#blank-${exerciseId}`).text(word);
+        }
+
+        function selectOption(button, text, lang) {
+            $('.exercise-option').removeClass('selected');
+            $(button).addClass('selected');
+            speakText(text, lang);
+        }
+
+        $(document).ready(function () {
+            $('.exercise').hide();
+            $('.exercise').first().show();
+
+            $('.exercise-option').click(function () {
+                $('.exercise-option').removeClass('selected');
+                $(this).addClass('selected');
+            });
+
+            $('.word-option').click(function () {
+                const word = $(this).text();
+                const exerciseId = $(this).closest('.exercise').data('exercise-id');
+                $(`#constructed-sentence-${exerciseId}`).append(word + ' ');
+            });
+        });
+    </script>
+    <style>
+        .exercise {
+            display: none;
+            margin-bottom: 20px;
+            background-color: #f2e6ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .exercise-question {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .exercise-options button,
+        .sentence-construction-container .word-option {
+            display: block;
+            margin-bottom: 5px;
+            padding: 10px;
+            width: 100%;
+            background-color: #d1b3ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .exercise-options button:hover,
+            .sentence-construction-container .word-option:hover {
+                background-color: #b399ff;
+            }
+
+        .submit-answer {
+            margin-top: 10px;
+            background-color: #a64dff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+            .submit-answer:hover {
+                background-color: #8000ff;
+            }
+
+        .selected {
+            background-color: #b399ff !important;
+        }
+
+        .sentence-construction-container {
+            margin-bottom: 15px;
+        }
+
+        .available-words {
+            margin-bottom: 10px;
+        }
+
+            .available-words button {
+                display: inline-block;
+                margin-right: 5px;
+                margin-bottom: 5px;
+                padding: 5px 10px;
+            }
+
+        .constructed-sentence {
+            min-height: 30px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .clear-sentence {
+            margin-top: 10px;
+            background-color: #d1b3ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+            .clear-sentence:hover {
+                background-color: #b399ff;
+            }
+
+        .fill-in-the-blank-container {
+            margin-bottom: 15px;
+        }
+
+        .blank {
+            border-bottom: 2px solid #000;
+            padding: 0 10px;
+            display: inline-block;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        #exercise-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+}

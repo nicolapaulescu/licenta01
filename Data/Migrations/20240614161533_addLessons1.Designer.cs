@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maibagamofisa.Data;
 
@@ -11,9 +12,11 @@ using maibagamofisa.Data;
 namespace maibagamofisa.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240614161533_addLessons1")]
+    partial class addLessons1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,31 +227,6 @@ namespace maibagamofisa.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("maibagamofisa.Models.Capitol", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Capitol", (string)null);
-                });
-
             modelBuilder.Entity("maibagamofisa.Models.Chapter", b =>
                 {
                     b.Property<int>("Id")
@@ -270,7 +248,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Chapter", (string)null);
+                    b.ToTable("Chapter");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Dialogue", b =>
@@ -299,97 +277,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dialogue", (string)null);
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Exercise", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CorrectAnswer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("LectieId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Options")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Question")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LectieId");
-
-                    b.ToTable("Exercise", (string)null);
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Job", b =>
-                {
-                    b.Property<int>("JobID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("JobID"));
-
-                    b.Property<string>("EnglishName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GermanName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImagePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LessonID")
-                        .HasColumnType("int");
-
-                    b.HasKey("JobID");
-
-                    b.ToTable("Job", (string)null);
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Lectie", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CapitolId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CapitolId");
-
-                    b.ToTable("Lectie", (string)null);
+                    b.ToTable("Dialogue");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Lesson", b =>
@@ -416,7 +304,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lesson", (string)null);
+                    b.ToTable("Lesson");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.WordPair", b =>
@@ -441,7 +329,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WordPair", (string)null);
+                    b.ToTable("WordPair");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -493,30 +381,6 @@ namespace maibagamofisa.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Exercise", b =>
-                {
-                    b.HasOne("maibagamofisa.Models.Lectie", null)
-                        .WithMany("Exercises")
-                        .HasForeignKey("LectieId");
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Lectie", b =>
-                {
-                    b.HasOne("maibagamofisa.Models.Capitol", null)
-                        .WithMany("Lessons")
-                        .HasForeignKey("CapitolId");
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Capitol", b =>
-                {
-                    b.Navigation("Lessons");
-                });
-
-            modelBuilder.Entity("maibagamofisa.Models.Lectie", b =>
-                {
-                    b.Navigation("Exercises");
                 });
 #pragma warning restore 612, 618
         }

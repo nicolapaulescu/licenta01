@@ -1,0 +1,561 @@
+{
+  "Chapter01": [
+    {
+      "Id": 1,
+      "Title": "Einführung und Begrüßungen/Introduction and Greetings",
+      "Description": "/images/Chapters/capitolu1.jpg",
+      "Lessons": [
+        {
+          "Id": 1,
+          "Title": "Begrüßungen und Verabschiedungen - Greetings and Farewells",
+          "Content": "Learn how to greet and say goodbye.",
+          "Exercises": [
+            {
+              "Id": 1,
+              "Question": "Wie sagt man 'Good morning' auf Deutsch?",
+              "Options": [ "Guten Morgen", "Guten Abend", "Gute Nacht" ],
+              "CorrectAnswer": "Guten Morgen",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 2,
+              "Question": "[Ich heiße Maria und ich bin 20 Jahre alt]",
+              "Options": [ "Ich heiße Anna und ich bin 25 Jahre alt", "Ich heiße Maria und ich bin 20 Jahre alt", "Ich heiße Lisa und ich bin 30 Jahre alt" ],
+              "CorrectAnswer": "Ich heiße Maria und ich bin 20 Jahre alt",
+              "Type": "Listening"
+            },
+            {
+              "Id": 3,
+              "Question": "Welche dieser Begrüßungen bedeutet 'Hello' auf Deutsch?",
+              "Options": [ "Hallo", "Danke", "Tschüss" ],
+              "CorrectAnswer": "Hallo",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 4,
+              "Question": "Füllen Sie die Lücke aus: 'Guten ________!' (Morning)",
+              "Options": [ "Tag", "Morgen", "Abend" ],
+              "CorrectAnswer": "Morgen",
+              "Type": "FillInTheBlank"
+            },
+            {
+              "Id": 5,
+              "Question": "Welches Wort bedeutet 'Good night'?",
+              "Options": [ "Guten Morgen", "Gute Nacht", "Guten Tag" ],
+              "CorrectAnswer": "Gute Nacht",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 6,
+              "Question": "Ordnen Sie die Wörter: 'Guten' - 'Tag' - 'und' - 'Hallo'",
+              "Options": [ "Hallo und Guten Tag", "Guten Tag und Hallo", "Hallo Guten und Tag" ],
+              "CorrectAnswer": "Guten Tag und Hallo",
+              "Type": "SentenceConstruction"
+            },
+            {
+              "Id": 7,
+              "Question": "Was ist die deutsche Begrüßung für 'Good evening'?",
+              "Options": [ "Guten Morgen", "Guten Abend", "Guten Nacht" ],
+              "CorrectAnswer": "Guten Abend",
+              "Type": "MultipleChoice"
+            }
+          ],
+          "IsCompleted": false
+        },
+        {
+          "Id": 2,
+          "Title": "Sich vorstellen - Introducing Yourself",
+          "Content": "Learn how to introduce yourself .",
+          "Exercises": [
+            {
+              "Id": 1,
+              "Question": "Wie sagt man 'My name is' auf Deutsch?",
+              "Options": [ "Mein Name ist", "Ich bin", "Ich heiße", "Ich wohne" ],
+              "CorrectAnswer": "Mein Name ist",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 2,
+              "Question": "Was bedeutet 'Ich heiße' auf Englisch?",
+              "Options": [ "My name is", "I am", "I live", "I work" ],
+              "CorrectAnswer": "My name is",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 3,
+              "Question": "Füllen Sie die Lücke aus: '_________, ich bin Anna.' (Hello)",
+              "Options": [ "Hallo", "Auf Wiedersehen", "Danke", "Bitte" ],
+              "CorrectAnswer": "Hallo",
+              "Type": "FillInTheBlank"
+            },
+            {
+              "Id": 4,
+              "Question": "Ordnen Sie die Wörter zu einem Satz: 'ist / Mein / Name / Anna'",
+              "Options": [ "Mein Name ist Anna" ],
+              "CorrectAnswer": "Mein Name ist Anna",
+              "Type": "SentenceConstruction"
+            },
+            {
+              "Id": 5,
+              "Question": "Was bedeutet 'Ich komme aus Deutschland' auf Englisch?",
+              "Options": [ "I come from Germany", "I live in Germany", "I work in Germany", "I study in Germany" ],
+              "CorrectAnswer": "I come from Germany",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 6,
+              "Question": "Wie sagt man 'I live in Berlin' auf Deutsch?",
+              "Options": [ "Ich wohne in Berlin", "Ich komme aus Berlin", "Ich arbeite in Berlin", "Ich studiere in Berlin" ],
+              "CorrectAnswer": "Ich wohne in Berlin",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 7,
+              "Question": "Füllen Sie die Lücke aus: 'Ich _________ in Berlin.' (live)",
+              "Options": [ "wohne", "komme", "arbeite", "studiere" ],
+              "CorrectAnswer": "wohne",
+              "Type": "FillInTheBlank"
+            }
+          ],
+          "IsCompleted": false
+        },
+        {
+          "Id": 3,
+          "Title": "Häufige Ausdrücke - Common Phrases",
+          "Content": "Learn common German phrases.",
+          "Exercises": [
+            {
+              "Id": 1,
+              "Question": "Was bedeutet 'Guten Morgen' auf Englisch?",
+              "Options": [ "Good Morning", "Good Evening", "Good Night", "Good Afternoon" ],
+              "CorrectAnswer": "Good Morning",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 2,
+              "Question": "Wie sagt man 'Thank you' auf Deutsch?",
+              "Options": [ "Bitte", "Danke", "Entschuldigung", "Guten Tag" ],
+              "CorrectAnswer": "Danke",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 3,
+              "Question": "Füllen Sie die Lücke aus: '_________, wie geht's?' (Hello)",
+              "Options": [ "Hallo", "Tschüss", "Bitte", "Gute Nacht" ],
+              "CorrectAnswer": "Hallo",
+              "Type": "FillInTheBlank"
+            },
+            {
+              "Id": 4,
+              "Question": "Ordnen Sie die Wörter zu einem Satz: 'mir / Gut / geht's'",
+              "Options": [ "Gut geht's mir" ],
+              "CorrectAnswer": "Gut geht's mir",
+              "Type": "SentenceConstruction"
+            },
+            {
+              "Id": 5,
+              "Question": "Was bedeutet 'Auf Wiedersehen' auf Englisch?",
+              "Options": [ "Goodbye", "Hello", "Please", "Thanks" ],
+              "CorrectAnswer": "Goodbye",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 6,
+              "Question": "Wie sagt man 'Excuse me' auf Deutsch?",
+              "Options": [ "Entschuldigung", "Danke", "Bitte", "Hallo" ],
+              "CorrectAnswer": "Entschuldigung",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 7,
+              "Question": "Füllen Sie die Lücke aus: '_________, können Sie mir helfen?' (Excuse me)",
+              "Options": [ "Entschuldigung", "Bitte", "Danke", "Guten Tag" ],
+              "CorrectAnswer": "Entschuldigung",
+              "Type": "FillInTheBlank"
+            }
+          ],
+          "IsCompleted": false
+        },
+        {
+          "Id": 4,
+          "Title": "Erste Gespräche - First Conversations",
+          "Content": "Learn how to have basic conversations .",
+          "Exercises": [
+            {
+              "Id": 1,
+              "Question": "Wie sagt man 'How are you?' auf Deutsch?",
+              "Options": [ "Wie geht es Ihnen?", "Wie heißen Sie?", "Wo wohnen Sie?", "Was machen Sie?" ],
+              "CorrectAnswer": "Wie geht es Ihnen?",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 2,
+              "Question": "Was bedeutet 'Mir geht es gut' auf Englisch?",
+              "Options": [ "I am fine", "I am busy", "I am tired", "I am hungry" ],
+              "CorrectAnswer": "I am fine",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 3,
+              "Question": "Füllen Sie die Lücke aus: '__________, wie geht's?' (Hi)",
+              "Options": [ "Hallo", "Auf Wiedersehen", "Danke", "Bitte" ],
+              "CorrectAnswer": "Hallo",
+              "Type": "FillInTheBlank"
+            },
+            {
+              "Id": 4,
+              "Question": "Ordnen Sie die Wörter zu einem Satz: 'heißt / Ich / Anna'",
+              "Options": [ "Ich heiße Anna" ],
+              "CorrectAnswer": "Ich heiße Anna",
+              "Type": "SentenceConstruction"
+            },
+            {
+              "Id": 5,
+              "Question": "Was bedeutet 'Woher kommen Sie?' auf Englisch?",
+              "Options": [ "Where are you from?", "What do you do?", "Where do you live?", "What is your name?" ],
+              "CorrectAnswer": "Where are you from?",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 6,
+              "Question": "Wie sagt man 'Nice to meet you' auf Deutsch?",
+              "Options": [ "Freut mich, Sie kennenzulernen", "Wie heißen Sie?", "Guten Tag", "Auf Wiedersehen" ],
+              "CorrectAnswer": "Freut mich, Sie kennenzulernen",
+              "Type": "MultipleChoice"
+            },
+            {
+              "Id": 7,
+              "Question": "Füllen Sie die Lücke aus: '__________, ich komme aus Deutschland.' (Yes)",
+              "Options": [ "Ja", "Nein", "Vielleicht", "Danke" ],
+              "CorrectAnswer": "Ja",
+              "Type": "FillInTheBlank"
+            }
+          ],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Title": "Zahlen und Wochentage/Numbers and Days of the Week",
+      "Description": "/images/Chapters/capitolu2.jpg",
+      "Lessons": [
+        {
+          "Id": 5,
+          "Title": "Zahlen von 1 bis 20 - Numbers from 1 to 20",
+          "Content": "Learn numbers from 1 to 20.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 6,
+          "Title": "Zahlen von 21 bis 100 - Numbers from 21 to 100",
+          "Content": "Learn numbers from 21 to 100.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 7,
+          "Title": "Wochentage und Monate - Days of the Week and Months",
+          "Content": "Learn days of the week and months.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 8,
+          "Title": "Datum und Uhrzeit - Date and Time",
+          "Content": "Learn how to tell the date and time.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 3,
+      "Title": "Familie und Freunde/Family and Friends",
+      "Description": "/images/Chapters/capitolu3.jpg",
+      "Lessons": [
+        {
+          "Id": 9,
+          "Title": "Familienmitglieder - Family Members",
+          "Content": "Learn the names of family members.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 10,
+          "Title": "Freunde und Bekannte - Friends and Acquaintances",
+          "Content": "Learn how to talk about friends and acquaintances.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 11,
+          "Title": "Beziehungen beschreiben - Describing Relationships",
+          "Content": "Learn how to describe relationships.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 12,
+          "Title": "Familienfeiern - Family Celebrations",
+          "Content": "Learn how to talk about family celebrations.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 4,
+      "Title": "Hobbys und Freizeit/Hobbies and Leisure",
+      "Description": "/images/Chapters/capitolu4.jpg",
+      "Lessons": [
+        {
+          "Id": 13,
+          "Title": "Sportarten - Sports",
+          "Content": "Learn the names of different sports.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 14,
+          "Title": "Freizeitaktivitäten - Leisure Activities",
+          "Content": "Learn about different leisure activities.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 15,
+          "Title": "Lesen und Hobbys - Reading and Hobbies",
+          "Content": "Learn how to talk about reading and hobbies.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 16,
+          "Title": "Ausgehen und Unterhaltung - Going Out and Entertainment",
+          "Content": "Learn how to talk about going out and entertainment.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 5,
+      "Title": "Einkaufen und Essen/Shopping and Food",
+      "Description": "/images/Chapters/capitolu5.jpg",
+      "Lessons": [
+        {
+          "Id": 17,
+          "Title": "Im Supermarkt - In the Supermarket",
+          "Content": "Learn how to talk about shopping in the supermarket.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 18,
+          "Title": "Lebensmittel - Groceries",
+          "Content": "Learn the names of different groceries.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 19,
+          "Title": "Im Restaurant - At the Restaurant",
+          "Content": "Learn how to talk about dining in a restaurant.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 20,
+          "Title": "Kleidung kaufen - Buying Clothes",
+          "Content": "Learn how to talk about buying clothes.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 21,
+          "Title": "Preise und Bezahlungen - Prices and Payments",
+          "Content": "Learn how to talk about prices and payments.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 6,
+      "Title": "Wohnen und Umgebung/Living and Environment",
+      "Description": "/images/Chapters/capitolu6.jpg",
+      "Lessons": [
+        {
+          "Id": 22,
+          "Title": "Mein Zuhause - My Home",
+          "Content": "Learn how to talk about your home.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 23,
+          "Title": "Möbel und Zimmer - Furniture and Rooms",
+          "Content": "Learn the names of furniture and rooms.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 24,
+          "Title": "In der Stadt - In the City",
+          "Content": "Learn how to talk about the city.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 25,
+          "Title": "Auf dem Land - In the Countryside",
+          "Content": "Learn how to talk about the countryside.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 7,
+      "Title": "Arbeit und Berufe/Work and Professions",
+      "Description": "/images/Chapters/capitolu7.jpg",
+      "Lessons": [
+        {
+          "Id": 26,
+          "Title": "Berufe und Arbeitsplätze - Professions and Workplaces",
+          "Content": "Learn the names of different professions and workplaces.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 27,
+          "Title": "Arbeitsplatz beschreiben - Describing the Workplace",
+          "Content": "Learn how to describe the workplace.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 28,
+          "Title": "Arbeitssuche - Job Hunting",
+          "Content": "Learn how to talk about job hunting.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 29,
+          "Title": "Ein Arbeitstag - A Working Day",
+          "Content": "Learn how to talk about a working day.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 8,
+      "Title": "Reisen und Verkehrsmittel/Travel and Transportation",
+      "Description": "/images/Chapters/capitolu8.jpg",
+      "Lessons": [
+        {
+          "Id": 30,
+          "Title": "Urlaubsziele - Holiday Destinations",
+          "Content": "Learn how to talk about holiday destinations.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 31,
+          "Title": "Verkehrsmittel - Means of Transportation",
+          "Content": "Learn the names of different means of transportation.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 32,
+          "Title": "Am Bahnhof - At the Train Station",
+          "Content": "Learn how to talk about being at the train station.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 33,
+          "Title": "Am Flughafen - At the Airport",
+          "Content": "Learn how to talk about being at the airport.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 9,
+      "Title": "Gesundheit und Körper/Health and Body",
+      "Description": "/images/Chapters/capitolu9.jpg",
+      "Lessons": [
+        {
+          "Id": 34,
+          "Title": "Körperteile - Body Parts",
+          "Content": "Learn the names of body parts.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 35,
+          "Title": "Beim Arzt - At the Doctor",
+          "Content": "Learn how to talk about being at the doctor.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 36,
+          "Title": "Krankheiten und Symptome - Illnesses and Symptoms",
+          "Content": "Learn how to talk about illnesses and symptoms.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 37,
+          "Title": "Gesund bleiben - Staying Healthy",
+          "Content": "Learn how to talk about staying healthy.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    },
+    {
+      "Id": 10,
+      "Title": "Feste und Feiertage/Celebrations and Holidays",
+      "Description": "/images/Chapters/capitolu10.jpg",
+      "Lessons": [
+        {
+          "Id": 38,
+          "Title": "Geburtstage - Birthdays",
+          "Content": "Learn how to talk about birthdays.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 39,
+          "Title": "Weihnachten - Christmas",
+          "Content": "Learn how to talk about Christmas.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 40,
+          "Title": "Ostern - Easter",
+          "Content": "Learn how to talk about Easter.",
+          "Exercises": [],
+          "IsCompleted": false
+        },
+        {
+          "Id": 41,
+          "Title": "Traditionelle Feste - Traditional Festivals",
+          "Content": "Learn how to talk about traditional festivals.",
+          "Exercises": [],
+          "IsCompleted": false
+        }
+      ]
+    }
+  ]
+}

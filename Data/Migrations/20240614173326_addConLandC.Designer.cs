@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using maibagamofisa.Data;
 
@@ -11,9 +12,11 @@ using maibagamofisa.Data;
 namespace maibagamofisa.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240614173326_addConLandC")]
+    partial class addConLandC
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,7 +249,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Capitol", (string)null);
+                    b.ToTable("Capitol");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Chapter", b =>
@@ -270,7 +273,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Chapter", (string)null);
+                    b.ToTable("Chapter");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Dialogue", b =>
@@ -299,7 +302,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dialogue", (string)null);
+                    b.ToTable("Dialogue");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Exercise", b =>
@@ -332,7 +335,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasIndex("LectieId");
 
-                    b.ToTable("Exercise", (string)null);
+                    b.ToTable("Exercise");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Job", b =>
@@ -360,7 +363,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("JobID");
 
-                    b.ToTable("Job", (string)null);
+                    b.ToTable("Job");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Lectie", b =>
@@ -389,7 +392,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasIndex("CapitolId");
 
-                    b.ToTable("Lectie", (string)null);
+                    b.ToTable("Lectie");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.Lesson", b =>
@@ -416,7 +419,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lesson", (string)null);
+                    b.ToTable("Lesson");
                 });
 
             modelBuilder.Entity("maibagamofisa.Models.WordPair", b =>
@@ -441,7 +444,7 @@ namespace maibagamofisa.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("WordPair", (string)null);
+                    b.ToTable("WordPair");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

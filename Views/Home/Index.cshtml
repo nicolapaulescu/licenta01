@@ -10,7 +10,13 @@
     <style>
         h1 {
             font-size: 2.5em;
+            color: purple;
+            text-align: center;
             margin: 20px 0;
+        }
+
+        .highlight {
+            color: #4B0082; /* Darker purple */
         }
 
         .bubble {
@@ -28,26 +34,22 @@
             box-shadow: inset -4px -4px 10px rgba(255, 255, 255, 0.6);
         }
 
-        .bubble:after {
-            content: '';
-            position: absolute;
-            top: 15%;
-            left: 15%;
-            width: 20%;
-            height: 20%;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-        }
-
-        
-        }
-
+            .bubble:after {
+                content: '';
+                position: absolute;
+                top: 15%;
+                left: 15%;
+                width: 20%;
+                height: 20%;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+            }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to DeutschLernenPro</h1>
+    <h1>Welcome to <span class="highlight">DeutschLernenPro</span></h1>
 
     <div class="bubble" style="left: 20%; top: 80%;">Vocabulary</div>
     <div class="bubble" style="left: 40%; top: 80%;">Grammar</div>
@@ -101,7 +103,7 @@
 
         // Generate new bubbles every few seconds
         setInterval(() => {
-            const keywords = ['Vocabulary', 'Grammar', 'Games', 'Community', 'Lessons', 'Practice'];
+            const keywords = ['Vocabulary', 'Grammar', 'Games', 'Learning', 'Lessons', 'Practice'];
             const randomIndex = Math.floor(Math.random() * keywords.length);
             const randomLeft = Math.random() * 80 + 10;
             createBubble(keywords[randomIndex], randomLeft);
